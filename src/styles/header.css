@@ -8,8 +8,12 @@
     margin: 40px auto 0;
 }
 
+nav {
+    z-index: 100;
+}
+
 .logo {
-    font-family: 'Tilt Prism', Verdana, cursive;
+    font-family: 'Cherry Bomb One', Verdana, cursive;
     font-weight: normal;
     font-size: 3.5rem;
     color: #ffffff;
@@ -18,7 +22,7 @@
 }
 
 .logo:hover {
-    color: #FF8100;
+    color: #f592c4;
     cursor: pointer;
 }
 
@@ -37,11 +41,11 @@
     display: inline-block;
     width: 100px;
     height: 43px;
-    background: #FF8100;
+    background: #f592c4;
     border-radius: 50px;
     transition: 500ms;
     overflow: hidden;
-    box-shadow: 1px 2px 0px #BF7830;
+    box-shadow: 1px 2px 0px #9f5278;
 }
 
 .switch_handle {
@@ -139,7 +143,7 @@ li.menu_item {
     top: 0;
     width: 300px;
     height: 100%;
-    background: linear-gradient(40deg,#ffffff, #f99d70 40%);
+    background: linear-gradient(40deg,#ffffff, #f592c4 40%);
     box-shadow: 5px 0px 10px #00000033;
     color: #ffffff;
     transition: left 0.5s ease;
@@ -307,4 +311,20 @@ li.menu_item {
 
 .no-scroll {
     overflow: hidden;
+}
+
+.blackout {
+    display: none;
+    transition: 0.3s ease;
+}
+
+.view {
+        height: calc(100vh + 0px);
+        width: calc(100vw + 0px);
+        background: #00000035;
+        position: fixed;
+        z-index: 50;
+        top: 0;
+        left: 0;
+        display: block;
 }
