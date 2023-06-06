@@ -4,9 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WordLandia</title>
+    <link rel="stylesheet" href="./src/styles/styles.css">
+    <link rel="stylesheet" href="./src/styles/header.css">
 </head>
 <body>
-    
+    <header class="header-container">
+        <nav>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
+                <li class="menu_item active">
+                    <a class="menu_link main">Main</a></li>
+                <li class="menu_item">
+                    <a class="menu_link animals">Animals</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link body">Body</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link food">Food</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link hobbies">Hobbies</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link home">Home</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link nature">Nature</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link sports">Sports</a></li>
+                </li>
+                <li class="menu_item">
+                    <a class="menu_link transport">Transport</a></li>
+                </li>
+            </ul>
+        </nav>
+        <h1 class="logo">WordLandia</h1>
+        <div class="header-buttons">
+            <div class="app_mode">
+                <input type="checkbox" role="switch" id="app_mode_input">
+                <label for="app_mode_input" class="toggle_app_mode">
+                    <span class="switch_handle"></span>
+                    <span class="train_mode">train</span>
+                    <span class="play_mode">play</span>
+                </label>
+            </div>
+            <a href="#" class="stats_btn">stats</a>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <script src="./src/index.js" type="module"></script>
 </body>
 </html>

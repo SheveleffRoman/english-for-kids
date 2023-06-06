@@ -1,0 +1,127 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    height: 45px;
+    max-width: 1350px;
+    margin: 40px auto 0;
+}
+
+.logo {
+    font-family: 'Pacifico', Verdana, cursive;
+    font-weight: normal;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-shadow: 0px 3px 3px #30296f;
+    transition: 0.3s ease;
+}
+
+
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: 0.3s ease;
+}
+
+.toggle_app_mode {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 43px;
+    background: #FF8100;
+    border-radius: 50px;
+    transition: 500ms;
+    overflow: hidden;
+    box-shadow: 1px 2px 0px #BF7830;
+}
+
+.switch_handle {
+    position: absolute;
+    display: inline-block;
+    top: 4px;
+    left: 4px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #ffffff;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+}
+
+.train_mode {
+    color: white;
+    position: relative;
+    top: 12px;
+    left: 45px;
+    font-family: 'Lato';
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.5s ease;
+}
+
+.play_mode {
+    display: none;
+    transition: 0.5s ease;
+}
+
+
+#app_mode_input:checked+.toggle_app_mode .train_mode {
+    display: none;
+}
+
+#app_mode_input:checked+.toggle_app_mode .play_mode {
+    color: white;
+    position: relative;
+    top: 11px;
+    left: 15px;
+    font-family: "Lato";
+    text-transform: uppercase;
+    font-size: 16px;
+    display: inline;
+}
+
+
+#app_mode_input:checked+.toggle_app_mode {
+    background: #09269C	;
+    box-shadow: 1px 2px 0px #1f327d;
+}
+
+#app_mode_input:checked+.toggle_app_mode .switch_handle {
+    background: #F7FFFF;
+    transform: translateX(57px);
+}
+
+#app_mode_input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.stats_btn {
+    text-align: center;
+    line-height: 2.6rem;
+    margin-left: 20px;
+    width: 68px;
+    display: block;
+    height: 43px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background-color: #2EB657;
+    color: #ffffff;
+    font-family: "Inter";
+    cursor: pointer;
+    box-shadow: 1px 2px 0px #168236;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+li.menu_item {
+    list-style: none;
+}
+
+
