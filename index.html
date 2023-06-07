@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/styles.css">
     <link rel="stylesheet" href="./src/styles/header.css">
+    <link rel="stylesheet" href="./src/styles/cards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,34 +29,34 @@
             </div>
             <ul class="menu">
                 <li class="menu_item active">
-                    <a class="menu_link main">Main</a></li>
+                    <a  href="#main" class="menu_link main">Main</a></li>
                 <li class="menu_item">
-                    <a class="menu_link animals">Animals</a></li>
+                    <a href="#animals" class="menu_link animals">Animals</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link body">Body</a></li>
+                    <a href="#body" class="menu_link body">Body</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link food">Food</a></li>
+                    <a href="#food" class="menu_link food">Food</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link hobbies">Hobbies</a></li>
+                    <a href="#hobbies" class="menu_link hobbies">Hobbies</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link home">Home</a></li>
+                    <a href="#home" class="menu_link home">Home</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link nature">Nature</a></li>
+                    <a href="#nature" class="menu_link nature">Nature</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link sports">Sports</a></li>
+                    <a href="#sports" class="menu_link sports">Sports</a></li>
                 </li>
                 <li class="menu_item">
-                    <a class="menu_link transport">Transport</a></li>
+                    <a href="#transport" class="menu_link transport">Transport</a></li>
                 </li>
             </ul>
         </nav>
-        <h1 class="logo">WordLandia</h1>
+        <a href="#"><h1 class="logo">WordLandia</h1></a>
         <div class="header-buttons">
             <div class="app_mode">
                 <input type="checkbox" role="switch" id="app_mode_input">
@@ -69,8 +70,73 @@
         </div>
     </header>
     <div class="blackout"></div>
-    <main>
-
+    <main class="main-container">
+        <div class="cards-container">
+            <div class="category" id="animals">
+                <a href="#animals">
+                    <div class="card-image image_animals">
+                        <img src="./src/images/cards/animals_img.png" alt="animals">
+                    </div>
+                    <div class="card-title">Animals</div>
+                </a>
+            </div>
+            <div class="category" id="body">
+                <a href="#body">
+                    <div class="card-image image_body">
+                        <img src="./src/images/cards/body_img.png" alt="body">
+                    </div>
+                    <div class="card-title">Body</div>
+                </a>
+            </div>
+            <div class="category" id="food">
+                <a href="#food">
+                    <div class="card-image image_food">
+                        <img src="./src/images/cards/food_img.png" alt="food">
+                    </div>
+                    <div class="card-title">Food</div>
+                </a>
+            </div>
+            <div class="category" id="hobbies">
+                <a href="#hobbies">
+                    <div class="card-image image_hobbies">
+                        <img src="./src/images/cards/hobbies_img.png" alt="hobbies">
+                    </div>
+                    <div class="card-title">Hobbies</div>
+                </a>
+            </div>
+            <div class="category" id="home">
+                <a href="#home">
+                    <div class="card-image image_home">
+                        <img src="./src/images/cards/home_img.png" alt="home">
+                    </div>
+                    <div class="card-title">Home</div>
+                </a>
+            </div>
+            <div class="category" id="nature">
+                <a href="#nature">
+                    <div class="card-image image_nature">
+                        <img src="./src/images/cards/nature_img.png" alt="nature">
+                    </div>
+                    <div class="card-title">Nature</div>
+                </a>
+            </div>
+            <div class="category" id="sports">
+                <a href="#sports">
+                    <div class="card-image image_sports">
+                        <img src="./src/images/cards/sports_img.png" alt="sports">
+                    </div>
+                    <div class="card-title">Sports</div>
+                </a>
+            </div>
+            <div class="category" id="transport">
+                <a href="#transport">
+                    <div class="card-image image_transport">
+                        <img src="./src/images/cards/transport_img.png" alt="transport">
+                    </div>
+                    <div class="card-title">Transport</div>
+                </a>
+            </div>
+        </div>
     </main>
     <script src="./src/index.js" type="module"></script>
 </body>
