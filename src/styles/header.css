@@ -224,7 +224,7 @@ li.menu_item {
     background-image: url(../images/nav_img/hobby.png);
 }
 
-.menu_link.nature::before {
+.menu_link.weather::before {
     background-image: url(../images/nav_img/planet-earth.png);
 }
 
