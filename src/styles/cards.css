@@ -83,3 +83,126 @@
 .card-image.image_transport {
     background-color: #4c3d15;
 }
+
+
+.card_container {
+    perspective: 600;
+    position: relative;
+    width: 250px;
+    cursor: pointer;
+    height: 250px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+}
+
+.card {
+    background: white;
+    width: 100%;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 19px;
+    position: absolute;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 1;
+    transition: 0.5s ease;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+}
+
+.card_face {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.card_image {
+    position: relative;
+    height: 180px;
+    margin-bottom: 25px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.card_image img {
+    width: 160px;
+    position: relative;
+    top: 18px;
+    left: 44px;
+    transition: 0.3s ease;
+}
+
+.card_info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info_btn {
+    /* background: #23d5ab; */
+    right: 0;
+    border-bottom-right-radius: 18px;
+    border-top-left-radius: 30px;
+}
+
+.info_btn, .sound_btn {
+    height: 38px;
+    width: 38px;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.info_btn .icon_btn {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: 9px;
+    left: 5px;
+    background-image: url(../images/cards/arrows-couple-counterclockwise-rotating-symbol.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.info_title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "Inter", Verdana, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #30296f;
+}
+
+.sound_btn {
+    /* background: #24d7f7; */
+    left: 0;
+    border-bottom-left-radius: 18px;
+    border-top-right-radius: 30px;
+}
+
+.sound_btn .icon_btn {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 6px;
+    left: 5px;
+    background-image: url(../images/cards/speaker-filled-audio-tool.png);
+    background-size: cover;
+}
+
+.card_back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.rotate {
+    transform: rotateY(180deg);
+}

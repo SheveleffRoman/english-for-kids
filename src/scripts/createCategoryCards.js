@@ -123,6 +123,7 @@ export async function createCards(cardId) {
 
         const cardBackTitle = new ElementBuilder('div')
             .setAttribute('class', 'info_title')
+            .text(`${item.ru}`)
             .build()
         
         cardBackInfo.appendChild(cardBackTitle);
