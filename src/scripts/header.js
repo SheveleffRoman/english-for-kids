@@ -1,3 +1,5 @@
+import { createCards } from "./createCategoryCards.js";
+
 export const burger = document.querySelector('div.burger');
 
 export function toggleMenu() {
@@ -17,12 +19,12 @@ export function toggleMenu() {
     })
 }
 
-const menuItems = document.querySelectorAll('.menu_item');
-const menuLinks = document.querySelectorAll('.menu_link');
-const cards = document.querySelectorAll('.category');
+export const menuItems = document.querySelectorAll('.menu_item');
+export const menuLinks = document.querySelectorAll('.menu_link');
+export const cards = document.querySelectorAll('.category');
 
 // Клик на ссылку
-export function handleClick() {
+function handleClick() {
   
   menuItems.forEach(link => link.classList.remove('active'));
   this.parentElement.classList.add('active');
@@ -30,7 +32,7 @@ export function handleClick() {
 }
 
 // Клик на карточку
-export function handleCardClick() {
+function handleCardClick() {
 
   
   // Получаем id ссылки, на которую ссылается карточка
@@ -45,6 +47,23 @@ export function handleCardClick() {
   correspondingLink.parentElement.classList.add('active');
 }
 
-menuLinks.forEach(link => link.addEventListener('click', handleClick));
-cards.forEach(card => card.addEventListener('click', handleCardClick));
+export function menuClick() {
+    menuLinks.forEach(link => link.addEventListener('click', handleClick));
+    menuLinks.forEach(link => link.addEventListener('click', () => {
+    let url = new URL(link.href)
+    let hash = url.hash.slice(1)
+    createCards(hash);
+  }));
+
+    cards.forEach(card => card.addEventListener('click', handleCardClick));
+}
+
+// menuLinks.forEach(link => link.addEventListener('click', handleClick));
+// menuLinks.forEach(link => link.addEventListener('click', () => {
+//   let url = new URL(link.href)
+//   let hash = url.hash.slice(1)
+//   createCards(hash);
+// }));
+
+// cards.forEach(card => card.addEventListener('click', handleCardClick));
 
