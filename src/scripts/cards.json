@@ -109,49 +109,49 @@
         "img": "",
         "words": [
           {
-            "en": "",
+            "en": "Apple",
             "ru": "Яблоко",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Orange",
             "ru": "Апельсин",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Milk",
             "ru": "Молоко",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Tea",
             "ru": "Чай",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Coffee",
             "ru": "Кофе",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Meat",
             "ru": "Мясо",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Banana",
             "ru": "Банан",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
+            "en": "Pasta",
             "ru": "Макароны",
             "img": "",
             "sound": ""
@@ -162,104 +162,103 @@
         "img": "",
         "words": [
           {
-            "en": "",
-            "ru": "",
+            "en": "Photography",
+            "ru": "Фотография",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Drawing",
+            "ru": "Рисование",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Cooking",
+            "ru": "Готовка",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Gardening",
+            "ru": "Садоводство",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Music",
+            "ru": "Музыка",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Sports",
+            "ru": "Спорт",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Reading",
+            "ru": "Чтение",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Traveling",
+            "ru": "Путешествия",
             "img": "",
             "sound": ""
           }
         ]
       },
       "home": {
-        "category": "",
         "img": "",
         "words": [
           {
-            "en": "",
-            "ru": "",
+            "en": "Window",
+            "ru": "Окно",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Door",
+            "ru": "Дверь",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Kitchen",
+            "ru": "Кухня",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Bath",
+            "ru": "Ванная",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Sofa",
+            "ru": "Диван",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Chair",
+            "ru": "Стул",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Table",
+            "ru": "Стол",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Wardrobe",
+            "ru": "Шкаф",
             "img": "",
             "sound": ""
           }
@@ -269,158 +268,180 @@
         "img": "",
         "words": [
           {
-            "en": "",
-            "ru": "",
+            "en": "Sun",
+            "ru": "Солнце",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Rain",
+            "ru": "Дождь",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Wind",
+            "ru": "Ветер",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Cloud",
+            "ru": "Облако",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Temperature",
+            "ru": "Температура",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Rainbow",
+            "ru": "Радуга",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Fog",
+            "ru": "Туман",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Snow",
+            "ru": "Снег",
             "img": "",
             "sound": ""
           }
         ]
       },
       "sports": {
-        "category": "",
         "img": "",
         "words": [
           {
-            "en": "",
-            "ru": "",
+            "en": "Football",
+            "ru": "Футбол",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Basketball",
+            "ru": "Баскетбол",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Tennis",
+            "ru": "Теннис",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Golf",
+            "ru": "Гольф",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Swimming",
+            "ru": "Плавание",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Hockey",
+            "ru": "Хоккей",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Volleyball",
+            "ru": "Волейбол",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Skiing",
+            "ru": "Лыжи",
             "img": "",
             "sound": ""
           }
         ]
       },
       "transport": {
-        "category": "",
         "img": "",
         "words": [
           {
-            "en": "",
-            "ru": "",
+            "en": "Car",
+            "ru": "Машина",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Bus",
+            "ru": "Автобус",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Train",
+            "ru": "Поезд",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Airplane",
+            "ru": "Самолет",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Motorcycle",
+            "ru": "Мотоцикл",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Ship",
+            "ru": "Корабль",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Subway",
+            "ru": "Метро",
             "img": "",
             "sound": ""
           },
           {
-            "en": "",
-            "ru": "",
+            "en": "Bicycle",
+            "ru": "Велосипед",
+            "img": "",
+            "sound": ""
+          },
+          {
+            "en": "Tram",
+            "ru": "Трамвай",
+            "img": "",
+            "sound": ""
+          },
+          {
+            "en": "Taxi",
+            "ru": "Такси",
+            "img": "",
+            "sound": ""
+          },
+          {
+            "en": "Helicopter",
+            "ru": "Вертолет",
+            "img": "",
+            "sound": ""
+          },
+          {
+            "en": "Trolleybus",
+            "ru": "Троллейбус",
             "img": "",
             "sound": ""
           }
