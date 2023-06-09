@@ -21,8 +21,8 @@ export function playSound() {
     console.log(soundBtn);
     soundBtn.forEach(btn => {
         btn.addEventListener('click', function() {
-            var soundPath = btn.firstChild.getAttribute('data-sound')
-            var audio = new Audio(soundPath);
+            let soundPath = btn.firstChild.getAttribute('data-sound')
+            let audio = new Audio(soundPath);
             audio.play()
         })
     })
