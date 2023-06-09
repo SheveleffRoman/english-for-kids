@@ -1,5 +1,5 @@
-import { createCards, categoryCardClick } from "./createCategoryCards.js";
-import { flipButtons } from "./interactive.js";
+import { createCards } from "./createCategoryCards.js";
+import { flipButtons, playSound } from "./interactive.js";
 
 export const burger = document.querySelector('div.burger');
 
@@ -56,6 +56,7 @@ export function menuClick() {
       let hash = url.hash.slice(1);
       await createCards(hash);
       flipButtons();
+      playSound();
     })
   );
   cards.forEach((card) => card.addEventListener("click", handleCardClick));

@@ -1,4 +1,4 @@
-import { flipButtons } from "./interactive.js";
+import { flipButtons, playSound } from "./interactive.js";
 
 class ElementBuilder {
   constructor(tagName) {
@@ -94,6 +94,7 @@ export async function createCards(cardId) {
 
       const spanSound = new ElementBuilder("span")
         .setAttribute("class", "icon_btn")
+        .setAttribute("data-sound", `${item.sound}`)
         .build();
 
       soundBtn.appendChild(spanSound);
@@ -143,6 +144,7 @@ export function categoryCardClick() {
       console.log(categoryId);
       await createCards(categoryId);
       flipButtons();
+      playSound();
     })
   );
 }

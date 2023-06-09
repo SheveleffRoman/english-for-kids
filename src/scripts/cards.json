@@ -6,7 +6,7 @@
                 "en": "Lion",
                 "ru": "Лев",
                 "img": "./src/images/words_img/animals/lion.png",
-                "sound": "" 
+                "sound": "./src/sounds/Lion.mp3" 
             },
             {
                 "en": "Elephant",
