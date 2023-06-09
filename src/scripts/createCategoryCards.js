@@ -59,6 +59,7 @@ export async function createCards(cardId) {
         const imageTag = new ElementBuilder('img')
             .build();
         imageTag.src = item.img;
+        imageTag.alt = item.en;
 
         cardImage.appendChild(imageTag);
 
@@ -117,6 +118,7 @@ export async function createCards(cardId) {
         cardBackImage.appendChild(cardBackImgTag);
 
         cardBackImgTag.src = item.img;
+        cardBackImgTag.alt = item.en;
 
         const cardBackInfo = new ElementBuilder('div')
             .setAttribute('class', 'card_info')
