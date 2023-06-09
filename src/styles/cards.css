@@ -203,6 +203,11 @@
     backface-visibility: hidden;
 }
 
-.rotate {
+.flip {
     transform: rotateY(180deg);
+}
+
+.hidden {
+    opacity: 0;
+
 }

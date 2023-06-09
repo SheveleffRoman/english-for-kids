@@ -1,4 +1,5 @@
-import { createCards } from "./createCategoryCards.js";
+import { createCards, categoryCardClick } from "./createCategoryCards.js";
+import { flipButtons } from "./interactive.js";
 
 export const burger = document.querySelector('div.burger');
 
@@ -48,14 +49,16 @@ function handleCardClick() {
 }
 
 export function menuClick() {
-    menuLinks.forEach(link => link.addEventListener('click', handleClick));
-    menuLinks.forEach(link => link.addEventListener('click', () => {
-    let url = new URL(link.href)
-    let hash = url.hash.slice(1)
-    createCards(hash);
-  }));
-
-    cards.forEach(card => card.addEventListener('click', handleCardClick));
+  menuLinks.forEach((link) => link.addEventListener("click", handleClick));
+  menuLinks.forEach((link) =>
+    link.addEventListener("click", async () => {
+      let url = new URL(link.href);
+      let hash = url.hash.slice(1);
+      await createCards(hash);
+      flipButtons();
+    })
+  );
+  cards.forEach((card) => card.addEventListener("click", handleCardClick));
 }
 
 // menuLinks.forEach(link => link.addEventListener('click', handleClick));
