@@ -5,444 +5,444 @@
             {
                 "en": "Lion",
                 "ru": "Лев",
-                "img": "./src/images/words_img/lion.png",
+                "img": "./src/images/words_img/animals/lion.png",
                 "sound": "" 
             },
             {
                 "en": "Elephant",
                 "ru": "Слон",
-                "img": "",
+                "img": "./src/images/words_img/animals/elephant.png",
                 "sound": ""
               },
               {
                 "en": "Whale",
                 "ru": "Кит",
-                "img": "",
+                "img": "./src/images/words_img/animals/whale.png",
                 "sound": ""
               },
               {
                 "en": "Eagle",
                 "ru": "Орел",
-                "img": "",
+                "img": "./src/images/words_img/animals/eagle.png",
                 "sound": ""
               },
               {
                 "en": "Giraffe",
                 "ru": "Жираф",
-                "img": "",
+                "img": "./src/images/words_img/animals/giraffe.png",
                 "sound": ""
               },
               {
                 "en": "Squirrel",
                 "ru": "Белка",
-                "img": "",
+                "img": "./src/images/words_img/animals/chipmunk.png",
                 "sound": ""
               },
               {
                 "en": "Dolphin",
                 "ru": "Дельфин",
-                "img": "",
+                "img": "./src/images/words_img/animals/dolphin.png",
                 "sound": ""
               },
               {
                 "en": "Penguin",
                 "ru": "Пенгвин",
-                "img": "",
+                "img": "./src/images/words_img/animals/penguin.png",
                 "sound": ""
               }
         ]
      },
      "body": {
-        "img": "",
+        "img": "./src/images/cards/body_img.png",
         "words": [
           {
             "en": "Head",
             "ru": "Голова",
-            "img": "",
+            "img": "./src/images/words_img/body/head.png",
             "sound": ""
           },
           {
             "en": "Fingers",
             "ru": "Пальцы",
-            "img": "",
+            "img": "./src/images/words_img/body/five-fingers.png",
             "sound": ""
           },
           {
             "en": "Ear",
             "ru": "Ухо",
-            "img": "",
+            "img": "./src/images/words_img/body/ear.png",
             "sound": ""
           },
           {
             "en": "Hand",
             "ru": "Рука",
-            "img": "",
+            "img": "./src/images/words_img/body/raise-hand.png",
             "sound": ""
           },
           {
             "en": "Leg",
             "ru": "Нога",
-            "img": "",
+            "img": "./src/images/words_img/body/leg.png",
             "sound": ""
           },
           {
             "en": "Eyes",
             "ru": "Глаза",
-            "img": "",
+            "img": "./src/images/words_img/body/eyes.png",
             "sound": ""
           },
           {
             "en": "Foot",
             "ru": "Стопа",
-            "img": "",
+            "img": "./src/images/words_img/body/footprint.png",
             "sound": ""
           },
           {
             "en": "Nose",
             "ru": "Нос",
-            "img": "",
+            "img": "./src/images/words_img/body/nose.png",
             "sound": ""
           }
         ]
       },
       "food": {
-        "img": "",
+        "img": "./src/images/cards/food_img.png",
         "words": [
           {
             "en": "Apple",
             "ru": "Яблоко",
-            "img": "",
+            "img": "./src/images/words_img/food/apple.png",
             "sound": ""
           },
           {
             "en": "Orange",
             "ru": "Апельсин",
-            "img": "",
+            "img": "./src/images/words_img/food/orange.png",
             "sound": ""
           },
           {
             "en": "Milk",
             "ru": "Молоко",
-            "img": "",
+            "img": "./src/images/words_img/food/milk-carton.png",
             "sound": ""
           },
           {
             "en": "Tea",
             "ru": "Чай",
-            "img": "",
+            "img": "./src/images/words_img/food/tea.png",
             "sound": ""
           },
           {
             "en": "Coffee",
             "ru": "Кофе",
-            "img": "",
+            "img": "./src/images/words_img/food/coffee-cup.png",
             "sound": ""
           },
           {
             "en": "Meat",
             "ru": "Мясо",
-            "img": "",
+            "img": "./src/images/words_img/food/beef.png",
             "sound": ""
           },
           {
             "en": "Banana",
             "ru": "Банан",
-            "img": "",
+            "img": "./src/images/words_img/food/bananas.png",
             "sound": ""
           },
           {
             "en": "Pasta",
             "ru": "Макароны",
-            "img": "",
+            "img": "./src/images/words_img/food/spaguetti.png",
             "sound": ""
           }
         ]
       },
       "hobbies": {
-        "img": "",
+        "img": "./src/images/cards/hobbies_img.png",
         "words": [
           {
             "en": "Photography",
             "ru": "Фотография",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/camera.png",
             "sound": ""
           },
           {
             "en": "Drawing",
             "ru": "Рисование",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/color-palette.png",
             "sound": ""
           },
           {
             "en": "Cooking",
             "ru": "Готовка",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/cooking.png",
             "sound": ""
           },
           {
             "en": "Gardening",
             "ru": "Садоводство",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/gardening.png",
             "sound": ""
           },
           {
             "en": "Music",
             "ru": "Музыка",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/guitar.png",
             "sound": ""
           },
           {
             "en": "Sports",
             "ru": "Спорт",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/sports.png",
             "sound": ""
           },
           {
             "en": "Reading",
             "ru": "Чтение",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/open-book.png",
             "sound": ""
           },
           {
             "en": "Traveling",
             "ru": "Путешествия",
-            "img": "",
+            "img": "./src/images/words_img/hobbies/travel.png",
             "sound": ""
           }
         ]
       },
       "home": {
-        "img": "",
+        "img": "./src/images/cards/home_img.png",
         "words": [
           {
             "en": "Window",
             "ru": "Окно",
-            "img": "",
+            "img": "./src/images/words_img/home/window.png",
             "sound": ""
           },
           {
             "en": "Door",
             "ru": "Дверь",
-            "img": "",
+            "img": "./src/images/words_img/home/door.png",
             "sound": ""
           },
           {
             "en": "Kitchen",
             "ru": "Кухня",
-            "img": "",
+            "img": "./src/images/words_img/home/kitchen.png",
             "sound": ""
           },
           {
             "en": "Bath",
             "ru": "Ванная",
-            "img": "",
+            "img": "./src/images/words_img/home/bath.png",
             "sound": ""
           },
           {
             "en": "Sofa",
             "ru": "Диван",
-            "img": "",
+            "img": "./src/images/words_img/home/seater-sofa.png",
             "sound": ""
           },
           {
             "en": "Chair",
             "ru": "Стул",
-            "img": "",
+            "img": "./src/images/words_img/home/chair.png",
             "sound": ""
           },
           {
             "en": "Table",
             "ru": "Стол",
-            "img": "",
+            "img": "./src/images/words_img/home/table.png",
             "sound": ""
           },
           {
             "en": "Wardrobe",
             "ru": "Шкаф",
-            "img": "",
+            "img": "./src/images/words_img/home/closet.png",
             "sound": ""
           }
         ]
       },
       "weather": {
-        "img": "",
+        "img": "./src/images/cards/weather_img.png",
         "words": [
           {
             "en": "Sun",
             "ru": "Солнце",
-            "img": "",
+            "img": "./src/images/words_img/weather/sun.png",
             "sound": ""
           },
           {
             "en": "Rain",
             "ru": "Дождь",
-            "img": "",
+            "img": "./src/images/words_img/weather/rain.png",
             "sound": ""
           },
           {
             "en": "Wind",
             "ru": "Ветер",
-            "img": "",
+            "img": "./src/images/words_img/weather/wind.png",
             "sound": ""
           },
           {
             "en": "Cloud",
             "ru": "Облако",
-            "img": "",
+            "img": "./src/images/words_img/weather/clouds.png",
             "sound": ""
           },
           {
             "en": "Temperature",
             "ru": "Температура",
-            "img": "",
+            "img": "./src/images/words_img/weather/hot.png",
             "sound": ""
           },
           {
             "en": "Rainbow",
             "ru": "Радуга",
-            "img": "",
+            "img": "./src/images/words_img/weather/rainbow.png",
             "sound": ""
           },
           {
             "en": "Fog",
             "ru": "Туман",
-            "img": "",
+            "img": "./src/images/words_img/weather/mist.png",
             "sound": ""
           },
           {
             "en": "Snow",
             "ru": "Снег",
-            "img": "",
+            "img": "./src/images/words_img/weather/snow.png",
             "sound": ""
           }
         ]
       },
       "sports": {
-        "img": "",
+        "img": "./src/images/cards/sports_img.png",
         "words": [
           {
             "en": "Football",
             "ru": "Футбол",
-            "img": "",
+            "img": "./src/images/words_img/sports/football.png",
             "sound": ""
           },
           {
             "en": "Basketball",
             "ru": "Баскетбол",
-            "img": "",
+            "img": "./src/images/words_img/sports/basketball.png",
             "sound": ""
           },
           {
             "en": "Tennis",
             "ru": "Теннис",
-            "img": "",
+            "img": "./src/images/words_img/sports/tennis.png",
             "sound": ""
           },
           {
             "en": "Golf",
             "ru": "Гольф",
-            "img": "",
+            "img": "./src/images/words_img/sports/golf-player.png",
             "sound": ""
           },
           {
             "en": "Swimming",
             "ru": "Плавание",
-            "img": "",
+            "img": "./src/images/words_img/sports/swimming.png",
             "sound": ""
           },
           {
             "en": "Hockey",
             "ru": "Хоккей",
-            "img": "",
+            "img": "./src/images/words_img/sports/hockey.png",
             "sound": ""
           },
           {
             "en": "Volleyball",
             "ru": "Волейбол",
-            "img": "",
+            "img": "./src/images/words_img/sports/block.png",
             "sound": ""
           },
           {
             "en": "Skiing",
             "ru": "Лыжи",
-            "img": "",
+            "img": "./src/images/words_img/sports/skiing.png",
             "sound": ""
           }
         ]
       },
       "transport": {
-        "img": "",
+        "img": "./src/images/cards/transport_img.png",
         "words": [
           {
             "en": "Car",
             "ru": "Машина",
-            "img": "",
+            "img": "./src/images/words_img/transport/car.png",
             "sound": ""
           },
           {
             "en": "Bus",
             "ru": "Автобус",
-            "img": "",
+            "img": "./src/images/words_img/transport/bus.png",
             "sound": ""
           },
           {
             "en": "Train",
             "ru": "Поезд",
-            "img": "",
+            "img": "./src/images/words_img/transport/train.png",
             "sound": ""
           },
           {
             "en": "Airplane",
             "ru": "Самолет",
-            "img": "",
+            "img": "./src/images/words_img/transport/airplane.png",
             "sound": ""
           },
           {
             "en": "Motorcycle",
             "ru": "Мотоцикл",
-            "img": "",
+            "img": "./src/images/words_img/transport/motorbike.png",
             "sound": ""
           },
           {
             "en": "Ship",
             "ru": "Корабль",
-            "img": "",
+            "img": "./src/images/words_img/transport/cargo-ship.png",
             "sound": ""
           },
           {
             "en": "Subway",
             "ru": "Метро",
-            "img": "",
+            "img": "./src/images/words_img/transport/subway.png",
             "sound": ""
           },
           {
             "en": "Bicycle",
             "ru": "Велосипед",
-            "img": "",
+            "img": "./src/images/words_img/transport/bicycle.png",
             "sound": ""
           },
           {
             "en": "Tram",
             "ru": "Трамвай",
-            "img": "",
+            "img": "./src/images/words_img/transport/tram.png",
             "sound": ""
           },
           {
             "en": "Taxi",
             "ru": "Такси",
-            "img": "",
+            "img": "./src/images/words_img/transport/taxi.png",
             "sound": ""
           },
           {
             "en": "Helicopter",
             "ru": "Вертолет",
-            "img": "",
+            "img": "./src/images/words_img/transport/helicopter.png",
             "sound": ""
           },
           {
             "en": "Trolleybus",
             "ru": "Троллейбус",
-            "img": "",
+            "img": "./src/images/words_img/transport/trolleybus.png",
             "sound": ""
           }
         ]
