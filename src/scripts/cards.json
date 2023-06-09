@@ -6,49 +6,49 @@
                 "en": "Lion",
                 "ru": "Лев",
                 "img": "./src/images/words_img/animals/lion.png",
-                "sound": "./src/sounds/Lion.mp3" 
+                "sound": "./src/sounds//animals/lion.mp3" 
             },
             {
                 "en": "Elephant",
                 "ru": "Слон",
                 "img": "./src/images/words_img/animals/elephant.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/elephant.mp3"
               },
               {
                 "en": "Whale",
                 "ru": "Кит",
                 "img": "./src/images/words_img/animals/whale.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/whale.mp3"
               },
               {
                 "en": "Eagle",
                 "ru": "Орел",
                 "img": "./src/images/words_img/animals/eagle.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/eagle.mp3"
               },
               {
                 "en": "Giraffe",
                 "ru": "Жираф",
                 "img": "./src/images/words_img/animals/giraffe.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/giraffe.mp3"
               },
               {
                 "en": "Squirrel",
                 "ru": "Белка",
                 "img": "./src/images/words_img/animals/chipmunk.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/squirrel.mp3"
               },
               {
                 "en": "Dolphin",
                 "ru": "Дельфин",
                 "img": "./src/images/words_img/animals/dolphin.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/dolphin.mp3"
               },
               {
                 "en": "Penguin",
                 "ru": "Пенгвин",
                 "img": "./src/images/words_img/animals/penguin.png",
-                "sound": ""
+                "sound": "./src/sounds//animals/penguin.mp3"
               }
         ]
      },
