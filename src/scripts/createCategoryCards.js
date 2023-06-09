@@ -130,11 +130,6 @@ export async function createCards(cardId) {
             .build()
         
         cardBackInfo.appendChild(cardBackTitle);
-        
-        
-
-
-
       });
     } catch (error) {
       console.error('Error:', error);
