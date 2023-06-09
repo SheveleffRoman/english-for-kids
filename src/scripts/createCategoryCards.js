@@ -1,4 +1,4 @@
-import { flipButtons, playSound } from "./interactive.js";
+import { flipButtons, playMode, playSound } from "./interactive.js";
 
 class ElementBuilder {
   constructor(tagName) {
@@ -64,6 +64,10 @@ export async function createCards(cardId) {
       const cardInfo = new ElementBuilder("div")
         .setAttribute("class", "card_info")
         .build();
+      const changeMode = document.getElementById("app_mode_input");
+      if (changeMode.checked) {
+        cardInfo.setAttribute("class", "card_info play-mode");
+      }
 
       cardFace.appendChild(cardInfo);
 
@@ -143,6 +147,7 @@ export function categoryCardClick() {
       const categoryId = card.getAttribute("id");
       console.log(categoryId);
       await createCards(categoryId);
+      playMode()
       flipButtons();
       playSound();
     })

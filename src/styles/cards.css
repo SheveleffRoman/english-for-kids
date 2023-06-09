@@ -211,3 +211,7 @@
     opacity: 0;
 
 }
+
+.play-mode {
+    visibility: hidden;
+}
