@@ -5,7 +5,7 @@
             {
                 "en": "Lion",
                 "ru": "Лев",
-                "img": "",
+                "img": "./src/images/words_img/lion.png",
                 "sound": "" 
             },
             {
