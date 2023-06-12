@@ -1,3 +1,8 @@
+import { cards, menuLinks } from "./header.js";
+
+export const playBtn = document.querySelector('.start-game');
+export const repeatBtn = document.querySelector('.repeat-word');
+
 export function flipButtons() {
   const flipBtn = document.querySelectorAll(".info_btn");
   console.log(flipBtn);
@@ -39,9 +44,14 @@ export function playMode() {
   });
 }
 
-export function playPanelOn() {
+export function playPanelView() {
   const playPanel = document.querySelector(".play-panel");
   changeMode.addEventListener("change", () => {
     playPanel.classList.toggle("game");
   });
+}
+
+export function playButtonOn() {
+  cards.forEach((card) => card.addEventListener('click', () => playBtn.removeAttribute('disabled')))
+  menuLinks.forEach((link) => link.addEventListener('click', () => playBtn.removeAttribute('disabled')));
 }

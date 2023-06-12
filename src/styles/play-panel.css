@@ -36,6 +36,10 @@
 
 .start-game {
     background-image: url('../images/play_panel/play-button-arrowhead.png');
+    background-color: #ffffff;
+}
+
+.start-game:hover {
     background-color: #6d5bbe;
 }
 
