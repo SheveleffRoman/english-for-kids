@@ -51,6 +51,10 @@
     background-image: url('../images/play_panel/repeat.png');
 }
 
+.repeat-word:hover {
+    background-color: #6d5bbe;
+}
+
 .repeat-word:disabled {
     background-color: #a1a0a6;
 }

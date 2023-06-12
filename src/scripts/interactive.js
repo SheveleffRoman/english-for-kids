@@ -51,7 +51,21 @@ export function playPanelView() {
   });
 }
 
-export function playButtonOn() {
-  cards.forEach((card) => card.addEventListener('click', () => playBtn.removeAttribute('disabled')))
-  menuLinks.forEach((link) => link.addEventListener('click', () => playBtn.removeAttribute('disabled')));
+export function playPanelButtonsOn() {
+  cards.forEach((card) =>
+    card.addEventListener("click", () => playBtn.removeAttribute("disabled"))
+  );
+  menuLinks.forEach((link) =>
+    link.addEventListener("click", () => playBtn.removeAttribute("disabled"))
+  );
+  playBtn.addEventListener("click", () => {
+    playBtn.setAttribute("disabled", "true");
+    repeatBtn.removeAttribute("disabled");
+  });
+  playBtn.addEventListener("click", () => {
+    changeMode.addEventListener("click", () => {
+      playBtn.removeAttribute("disabled");
+      repeatBtn.setAttribute("disabled", "true");
+    });
+  });
 }
