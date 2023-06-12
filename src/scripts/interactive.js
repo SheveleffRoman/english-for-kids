@@ -28,12 +28,20 @@ export function playSound() {
     })
 }
 
+const changeMode = document.getElementById("app_mode_input");
+
 export function playMode() {
-    const changeMode = document.getElementById('app_mode_input')
-    console.log(changeMode)
-    const cards = document.querySelectorAll('.card_face > .card_info')
-    console.log(cards)
-    changeMode.addEventListener('change', () => {
-        cards.forEach(card => card.classList.toggle('play-mode'))
-    })
+  console.log(changeMode);
+  const cards = document.querySelectorAll(".card_face > .card_info");
+  console.log(cards);
+  changeMode.addEventListener("change", () => {
+    cards.forEach((card) => card.classList.toggle("play-mode"));
+  });
+}
+
+export function playPanelOn() {
+  const playPanel = document.querySelector(".play-panel");
+  changeMode.addEventListener("change", () => {
+    playPanel.classList.toggle("game");
+  });
 }
