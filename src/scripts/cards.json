@@ -95,7 +95,7 @@
             "en": "Foot",
             "ru": "Стопа",
             "img": "./src/images/words_img/body/footprint.png",
-            "sound": "./src/sounds/body/head.mp3"
+            "sound": "./src/sounds/body/foot.mp3"
           },
           {
             "en": "Nose",
