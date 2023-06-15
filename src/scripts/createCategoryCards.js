@@ -1,6 +1,6 @@
 import { flipButtons, playMode, playSound } from "./interactive.js";
 
-class ElementBuilder {
+export class ElementBuilder {
   constructor(tagName) {
     this.element = document.createElement(tagName);
   }

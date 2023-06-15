@@ -1,7 +1,10 @@
+import { ElementBuilder } from "./createCategoryCards.js";
 import { cards, menuLinks } from "./header.js";
 
 export const playBtn = document.querySelector(".start-game");
 export const repeatBtn = document.querySelector(".repeat-word");
+const stars = document.querySelector(".stars");
+console.log(stars);
 
 export function flipButtons() {
   const flipBtn = document.querySelectorAll(".info_btn");
@@ -46,8 +49,10 @@ export function playMode() {
 
 export function playPanelView() {
   const playPanel = document.querySelector(".play-panel");
+  const stars = document.querySelector(".stars");
   changeMode.addEventListener("change", () => {
     playPanel.classList.toggle("game");
+    stars.classList.toggle("no-display");
   });
 }
 
@@ -70,12 +75,10 @@ export function playPanelButtonsOn() {
   });
 }
 
-
 const correctWords = [];
 const incorrectWords = [];
 
 export function goPlay() {
-  
   playBtn.addEventListener("click", async function () {
     const soundArr = await createSound();
     let currentWord = soundArr[0];
@@ -84,7 +87,7 @@ export function goPlay() {
     audio.play();
     // console.log("Find the card with the word:", currentWord.en);
 
-    repeatBtn.addEventListener('click', () => repeatLastWord(currentWord));
+    repeatBtn.addEventListener("click", () => repeatLastWord(currentWord));
 
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
@@ -93,6 +96,7 @@ export function goPlay() {
         if (clickedWord === currentWord.en) {
           card.classList.add("green");
           card.classList.add("non-clickable");
+          makeStar(true);
           // console.log("Right choice:", clickedWord);
           correctWords.push(clickedWord);
           // console.log(correctWords)
@@ -113,6 +117,7 @@ export function goPlay() {
             );
           }
         } else {
+          makeStar(false);
           incorrectWords.push(currentWord.en);
           // console.log(incorrectWords);
           // console.log("Find the card with the word:", currentWord.en);
@@ -121,7 +126,7 @@ export function goPlay() {
     });
   });
 }
-
+// возможно, что придется убрать и вписать в основную
 function repeatLastWord(currentWord) {
   if (currentWord) {
     let soundPath = currentWord.sound;
@@ -161,4 +166,20 @@ function shuffleArray(array) {
     ];
   }
   return array;
+}
+
+function makeStar(isMatch) {
+  if (isMatch) {
+    const star = new ElementBuilder("div")
+      .setAttribute("class", "star")
+      .build();
+    stars.appendChild(star);
+    return star;
+  } else {
+    const noStar = new ElementBuilder("div")
+      .setAttribute("class", "no-star")
+      .build();
+    stars.appendChild(noStar);
+    return noStar;
+  }
 }
