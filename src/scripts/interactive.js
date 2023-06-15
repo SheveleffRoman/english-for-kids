@@ -70,46 +70,61 @@ export function playPanelButtonsOn() {
   });
 }
 
+
+const correctWords = [];
+const incorrectWords = [];
+
 export function goPlay() {
-  repeatBtn.addEventListener("click", repeatLastWord);
+  
+  playBtn.addEventListener("click", async function () {
+    const soundArr = await createSound();
+    let currentWord = soundArr[0];
+    let soundPath = currentWord.sound;
+    let audio = new Audio(soundPath);
+    audio.play();
+    // console.log("Find the card with the word:", currentWord.en);
 
-  playBtn.addEventListener("click", async () => {
-    const soundArr = await createSound(); // Получаем массив с объектами
-    playNextWord(soundArr);
-  });
-}
+    repeatBtn.addEventListener('click', () => repeatLastWord(currentWord));
 
-let lastWordObj = null; // Переменная для хранения последнего слова
-
-function playNextWord(soundArr) {
-  if (soundArr.length === 0) {
-    console.log("WELL DONE!");
-    return setTimeout(() => window.location.href = '/index.html', 2000); // Массив слов пуст ВОТ ТУТ ДОЛЖЕН БЫТЬ ИТОГ ПО ОЧКАМ!!!
-  }
-
-  let wordObj = soundArr.shift(); // Извлекаем первое слово из массива
-  console.log(wordObj);
-  lastWordObj = wordObj; // Сохраняем текущее слово как последнее
-  let soundPath = wordObj.sound;
-  let audio = new Audio(soundPath);
-  audio.play();
-
-  // Добавляем обработчик клика для каждой карточки
-  const cardElements = document.querySelectorAll(".card_container");
-  cardElements.forEach((card) => {
-    card.addEventListener("click", function clickHandler() {
-      let cardText = card.querySelector(".info_title").textContent;
-      if (cardText === wordObj.en) {
-        card.removeEventListener("click", clickHandler);
-        playNextWord(soundArr); // Проигрываем следующее слово
-      } // тут добавить звук ошибки
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.addEventListener("click", function () {
+        const clickedWord = this.dataset.word;
+        if (clickedWord === currentWord.en) {
+          card.classList.add("green");
+          card.classList.add("non-clickable");
+          // console.log("Right choice:", clickedWord);
+          correctWords.push(clickedWord);
+          // console.log(correctWords)
+          soundArr.shift();
+          if (soundArr.length > 0) {
+            currentWord = soundArr[0];
+            soundPath = currentWord.sound;
+            audio = new Audio(soundPath);
+            audio.play();
+            // console.log("Find the card with the word:", currentWord.en);
+          } else {
+            console.log("All words have been matched.");
+            console.log(correctWords);
+            console.log(incorrectWords);
+            return setTimeout(
+              () => (window.location.href = "/index.html"),
+              5000
+            );
+          }
+        } else {
+          incorrectWords.push(currentWord.en);
+          // console.log(incorrectWords);
+          // console.log("Find the card with the word:", currentWord.en);
+        }
+      });
     });
   });
 }
 
-function repeatLastWord() {
-  if (lastWordObj) {
-    let soundPath = lastWordObj.sound;
+function repeatLastWord(currentWord) {
+  if (currentWord) {
+    let soundPath = currentWord.sound;
     let audio = new Audio(soundPath);
     audio.play();
   }
@@ -127,7 +142,7 @@ async function getSoundArray(category) {
     const data = await response.json();
     let soundArr = data[category].words;
     soundArr = shuffleArray(soundArr); // Перемешиваем массив
-    console.log(soundArr);
+    // console.log(soundArr);
     return soundArr;
   } catch (error) {
     console.error("Error:", error);

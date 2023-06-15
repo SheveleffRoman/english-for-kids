@@ -38,6 +38,7 @@ export async function createCards(cardId) {
 
       const cardElem = new ElementBuilder("div")
         .setAttribute("class", "card")
+        .setAttribute("data-word", `${item.en}`)
         .build();
 
       cardsContainer.appendChild(cardsWrapper);

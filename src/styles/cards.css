@@ -215,3 +215,12 @@
 .play-mode {
     visibility: hidden;
 }
+
+.green {
+    border: 3px solid green;
+    transition: null;
+}
+
+.non-clickable {
+    pointer-events: none;
+  }
