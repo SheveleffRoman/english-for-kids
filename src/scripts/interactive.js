@@ -111,6 +111,7 @@ export function goPlay() {
             console.log("All words have been matched.");
             console.log(correctWords);
             console.log(incorrectWords);
+            setTimeout(() => makeSummary(), 2000)
             return setTimeout(
               () => (window.location.href = "/index.html"),
               5000
@@ -185,5 +186,17 @@ function makeStar(isMatch) {
     let starSound = new Audio('./src/sounds/stars/wrong.mp3');
     starSound.play();
     return noStar;
+  }
+}
+
+function makeSummary() {
+  const cardsContainer = document.querySelector(".cards-container");
+  cardsContainer.innerHTML = "";
+  if (incorrectWords.length === 0) {
+    cardsContainer.innerHTML = `<div class="summary">Вы сделали 0 ошибок, поздравляю!</div>`;
+  } else if (incorrectWords.length === 1) {
+    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`
+  } else {
+    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`
   }
 }
