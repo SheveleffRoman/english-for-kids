@@ -105,7 +105,7 @@ export function goPlay() {
             currentWord = soundArr[0];
             soundPath = currentWord.sound;
             audio = new Audio(soundPath);
-            audio.play();
+            setTimeout(() => audio.play(), 500);
             // console.log("Find the card with the word:", currentWord.en);
           } else {
             console.log("All words have been matched.");
@@ -174,12 +174,16 @@ function makeStar(isMatch) {
       .setAttribute("class", "star")
       .build();
     stars.appendChild(star);
+    let starSound = new Audio('./src/sounds/stars/right.mp3');
+    starSound.play();
     return star;
   } else {
     const noStar = new ElementBuilder("div")
       .setAttribute("class", "no-star")
       .build();
     stars.appendChild(noStar);
+    let starSound = new Audio('./src/sounds/stars/wrong.mp3');
+    starSound.play();
     return noStar;
   }
 }
