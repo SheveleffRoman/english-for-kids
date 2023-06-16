@@ -1,5 +1,6 @@
 import { ElementBuilder } from "./createCategoryCards.js";
 import { cards, menuLinks } from "./header.js";
+import { pushToLocalStorage } from "./stats.js";
 
 export const playBtn = document.querySelector(".start-game");
 export const repeatBtn = document.querySelector(".repeat-word");
@@ -75,8 +76,8 @@ export function playPanelButtonsOn() {
   });
 }
 
-const correctWords = [];
-const incorrectWords = [];
+export const correctWords = [];
+export const incorrectWords = [];
 
 export function goPlay() {
   playBtn.addEventListener("click", async function () {
@@ -99,7 +100,7 @@ export function goPlay() {
           makeStar(true);
           // console.log("Right choice:", clickedWord);
           correctWords.push(clickedWord);
-          // console.log(correctWords)
+          // console.log(localStorage);
           soundArr.shift();
           if (soundArr.length > 0) {
             currentWord = soundArr[0];
@@ -111,7 +112,10 @@ export function goPlay() {
             console.log("All words have been matched.");
             console.log(correctWords);
             console.log(incorrectWords);
-            setTimeout(() => makeSummary(), 2000)
+
+            pushToLocalStorage();
+
+            setTimeout(() => makeSummary(), 2000);
             return setTimeout(
               () => (window.location.href = "/index.html"),
               5000
@@ -119,15 +123,12 @@ export function goPlay() {
           }
         } else {
           makeStar(false);
-          incorrectWords.push(currentWord.en);
-          // console.log(incorrectWords);
-          // console.log("Find the card with the word:", currentWord.en);
-        }
+          incorrectWords.push(currentWord.en);        }
       });
     });
   });
 }
-// возможно, что придется убрать и вписать в основную
+
 function repeatLastWord(currentWord) {
   if (currentWord) {
     let soundPath = currentWord.sound;
@@ -175,7 +176,7 @@ function makeStar(isMatch) {
       .setAttribute("class", "star")
       .build();
     stars.appendChild(star);
-    let starSound = new Audio('./src/sounds/stars/right.mp3');
+    let starSound = new Audio("./src/sounds/stars/right.mp3");
     starSound.play();
     return star;
   } else {
@@ -183,7 +184,7 @@ function makeStar(isMatch) {
       .setAttribute("class", "no-star")
       .build();
     stars.appendChild(noStar);
-    let starSound = new Audio('./src/sounds/stars/wrong.mp3');
+    let starSound = new Audio("./src/sounds/stars/wrong.mp3");
     starSound.play();
     return noStar;
   }
@@ -195,8 +196,8 @@ function makeSummary() {
   if (incorrectWords.length === 0) {
     cardsContainer.innerHTML = `<div class="summary">Вы сделали 0 ошибок, поздравляю!</div>`;
   } else if (incorrectWords.length === 1) {
-    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`
+    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`;
   } else {
-    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`
+    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`;
   }
 }
