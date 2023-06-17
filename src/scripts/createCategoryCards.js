@@ -20,6 +20,8 @@ export class ElementBuilder {
   }
 }
 
+export const cardsContainer = document.querySelector(".cards-container");
+
 export async function createCards(cardId) {
   try {
     const response = await fetch("./src/scripts/cards.json");
@@ -27,7 +29,6 @@ export async function createCards(cardId) {
     const wordsArr = data[cardId].words;
     console.log(wordsArr);
 
-    const cardsContainer = document.querySelector(".cards-container");
     console.log(cardsContainer);
     cardsContainer.innerHTML = "";
 
