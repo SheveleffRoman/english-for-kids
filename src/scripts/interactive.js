@@ -83,6 +83,7 @@ export function goPlay() {
   playBtn.addEventListener("click", async function () {
     const soundArr = await createSound();
     let currentWord = soundArr[0];
+    console.log(currentWord);
     let soundPath = currentWord.sound;
     let audio = new Audio(soundPath);
     audio.play();
@@ -94,12 +95,14 @@ export function goPlay() {
     cards.forEach((card) => {
       card.addEventListener("click", function () {
         const clickedWord = this.dataset.word;
+        const clickedCategory = this.dataset.category;
         if (clickedWord === currentWord.en) {
           card.classList.add("green");
           card.classList.add("non-clickable");
           makeStar(true);
           // console.log("Right choice:", clickedWord);
-          correctWords.push(clickedWord);
+          let obj = {category: clickedCategory, word: clickedWord}
+          correctWords.push(obj);
           // console.log(localStorage);
           soundArr.shift();
           if (soundArr.length > 0) {
@@ -123,7 +126,8 @@ export function goPlay() {
           }
         } else {
           makeStar(false);
-          incorrectWords.push(currentWord.en);        }
+          let obj = {category: clickedCategory, word: currentWord.en}
+          incorrectWords.push(obj);        }
       });
     });
   });
