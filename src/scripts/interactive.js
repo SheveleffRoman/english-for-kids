@@ -1,6 +1,6 @@
 import { ElementBuilder } from "./createCategoryCards.js";
 import { cards, menuLinks } from "./header.js";
-import { pushToLocalStorage } from "./stats.js";
+import { pushToLocalStorage, pushTrainedToLocalStorage } from "./stats.js";
 
 export const playBtn = document.querySelector(".start-game");
 export const repeatBtn = document.querySelector(".repeat-word");
@@ -13,6 +13,9 @@ export function flipButtons() {
   flipBtn.forEach((btn) =>
     btn.addEventListener("click", () => {
       const wordCard = btn.closest(".card");
+
+      pushTrainedToLocalStorage(wordCard);
+      
       wordCard.classList.add("flip");
       btn.classList.add("hidden");
       const backCard = wordCard.querySelector(".card_back");

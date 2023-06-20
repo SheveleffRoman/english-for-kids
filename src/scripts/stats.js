@@ -30,63 +30,74 @@ export function pushToLocalStorage() {
 
     // Сохраняем обновленный массив слов в локальное хранилище
     localStorage.setItem("correctWords", JSON.stringify(existingCorrectWords));
-    localStorage.setItem(
-      "incorrectWords",
-      JSON.stringify(existingIncorrectWords)
-    );
+    localStorage.setItem("incorrectWords", JSON.stringify(existingIncorrectWords));
+  }
+}
+
+export function pushTrainedToLocalStorage(card) {
+  let arr = [{ category: card.dataset.category, word: card.dataset.word }];
+  if (!localStorage.trainedWords) {
+    localStorage.setItem("trainedWords", JSON.stringify(arr));
+  } else {
+    let existingTrainedWords = localStorage.getItem("trainedWords");
+    existingTrainedWords = JSON.parse(existingTrainedWords);
+    existingTrainedWords = existingTrainedWords.concat(arr);
+    localStorage.setItem("trainedWords", JSON.stringify(existingTrainedWords));
   }
 }
 
 function getStats() {
+  let getTrainedWords = localStorage.getItem("trainedWords");
   let getCorrectWords = localStorage.getItem("correctWords");
   let getIncorrectWords = localStorage.getItem("incorrectWords");
 
+  getTrainedWords = JSON.parse(getTrainedWords);
   getCorrectWords = JSON.parse(getCorrectWords);
   getIncorrectWords = JSON.parse(getIncorrectWords);
 
-//   countStats(getCorrectWords);
-//   countStats(getIncorrectWords);
-
+  //   countStats(getCorrectWords);
+  //   countStats(getIncorrectWords);
+  let trainedW = countStats(getTrainedWords);
   let correctW = countStats(getCorrectWords);
   let incorrectW = countStats(getIncorrectWords);
-  createTable(correctW, incorrectW);
-
+  createTable(trainedW, correctW, incorrectW);
 }
 
 function countStats(array) {
-    if (array) {
-  // Подсчет повторений с помощью reduce
-  const wordCounts = array.reduce((counts, obj) => {
-    const { category, word } = obj;
-    const key = `${category}-${word}`;
+  if (array) {
+    // Подсчет повторений с помощью reduce
+    const wordCounts = array.reduce((counts, obj) => {
+      const { category, word } = obj;
+      const key = `${category}-${word}`;
 
-    // Увеличение счетчика повторений для данного ключа или инициализация его значением 1
-    counts[key] = (counts[key] || 0) + 1;
+      // Увеличение счетчика повторений для данного ключа или инициализация его значением 1
+      counts[key] = (counts[key] || 0) + 1;
 
-    return counts;
-  }, {});
+      return counts;
+    }, {});
 
-  // Преобразование результата в объект для удобного доступа
-  const result = {};
-  for (const key in wordCounts) {
-    const [category, word] = key.split("-");
+    // Преобразование результата в объект для удобного доступа
+    const result = {};
+    for (const key in wordCounts) {
+      const [category, word] = key.split("-");
 
-    // Проверка, есть ли уже запись для данной категории
-    if (!result[category]) {
-      result[category] = {};
+      // Проверка, есть ли уже запись для данной категории
+      if (!result[category]) {
+        result[category] = {};
+      }
+
+      // Запись подсчета повторений для слова в категории
+      result[category][word] = wordCounts[key];
     }
 
-    // Запись подсчета повторений для слова в категории
-    result[category][word] = wordCounts[key];
+    // Вывод результатов
+    console.log(result);
+    return result;
   }
-
-  // Вывод результатов
-  console.log(result);
-  return result;
-} return {}
+  return {};
 }
 
-async function createTable(arr1, arr2) {
+async function createTable(arr1, arr2, arr3) {
   const response = await fetch("./src/scripts/cards.json");
   const data = await response.json();
 
@@ -111,7 +122,7 @@ async function createTable(arr1, arr2) {
   tableButtons.appendChild(difficultWords);
   tableButtons.appendChild(resetStat);
 
-  resetStat.addEventListener('click', clearStat)
+  resetStat.addEventListener("click", clearStat);
 
   const tableOverflow = new ElementBuilder("div")
     .setAttribute("class", "table-overflow")
@@ -158,43 +169,50 @@ async function createTable(arr1, arr2) {
       translation.textContent = element.ru;
 
       let elem = element.en;
+      const trained = new ElementBuilder("td").build();
       const correct = new ElementBuilder("td").build();
       const incorrect = new ElementBuilder("td").build();
-      const rate = new ElementBuilder('td').build()
+      const rate = new ElementBuilder("td").build();
 
-      if (!arr1[key] || !arr1.length === 0) {
-        correct.textContent = '0';
+      if (!arr1[key] || !arr1[key][elem]) {
+        trained.textContent = "0";
       } else {
-        correct.textContent = arr1[key][elem];
+        trained.textContent = arr1[key][elem];
       }
 
-      if (!arr2[key] || !arr2[key][elem]) {
-        incorrect.textContent = '0';
+      if (!arr2[key] || arr2.length === 0) {
+        correct.textContent = "0";
       } else {
-      incorrect.textContent = arr2[key][elem];
+        correct.textContent = arr2[key][elem];
       }
 
-      if (correct.textContent === '0' && incorrect.textContent === '0') {
-        rate.textContent = '0';
+      if (!arr3[key] || !arr3[key][elem]) {
+        incorrect.textContent = "0";
       } else {
-        let percentage = parseInt(correct.textContent) / (parseInt(correct.textContent) + parseInt(incorrect.textContent)) * 100
+        incorrect.textContent = arr3[key][elem];
+      }
+
+      if (correct.textContent === "0" && incorrect.textContent === "0") {
+        rate.textContent = "0";
+      } else {
+        let percentage =
+          (parseInt(correct.textContent) /
+            (parseInt(correct.textContent) + parseInt(incorrect.textContent))) *
+          100;
         rate.textContent = percentage.toFixed(0);
       }
       tableRow.appendChild(categ);
       tableRow.appendChild(word);
       tableRow.appendChild(translation);
-      // trained
+      tableRow.appendChild(trained);
       tableRow.appendChild(correct);
       tableRow.appendChild(incorrect);
       tableRow.appendChild(rate);
-
-
-      
     });
   }
 }
 
 function clearStat() {
-    localStorage.clear();
-    statsBtn.click()
+  localStorage.clear();
+  statsBtn.click();
 }
