@@ -1,4 +1,4 @@
-import { createCards } from "./createCategoryCards.js";
+import { cardsContainer, createCards } from "./createCategoryCards.js";
 import { flipButtons, playMode, playSound } from "./interactive.js";
 
 export const burger = document.querySelector('div.burger');
@@ -55,6 +55,7 @@ export function menuClick() {
       let url = new URL(link.href);
       let hash = url.hash.slice(1);
       await createCards(hash);
+      cardsContainer.classList.remove('table-flex')
       playMode();
       flipButtons();
       playSound();
