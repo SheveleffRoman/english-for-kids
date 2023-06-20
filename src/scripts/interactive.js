@@ -15,7 +15,7 @@ export function flipButtons() {
       const wordCard = btn.closest(".card");
 
       pushTrainedToLocalStorage(wordCard);
-      
+
       wordCard.classList.add("flip");
       btn.classList.add("hidden");
       const backCard = wordCard.querySelector(".card_back");
@@ -124,7 +124,7 @@ export function goPlay() {
             setTimeout(() => makeSummary(), 2000);
             return setTimeout(
               () => (window.location.href = "/index.html"),
-              5000
+              7000
             );
           }
         } else {
@@ -200,11 +200,34 @@ function makeStar(isMatch) {
 function makeSummary() {
   const cardsContainer = document.querySelector(".cards-container");
   cardsContainer.innerHTML = "";
+  const summary = new ElementBuilder('div')
+    .setAttribute('class', 'summary')
+    .build();
+  const headerSummary = new ElementBuilder('h1')
+    .build();
+  const res = new ElementBuilder('p')
+    .build();
+
   if (incorrectWords.length === 0) {
-    cardsContainer.innerHTML = `<div class="summary">Вы сделали 0 ошибок, поздравляю!</div>`;
-  } else if (incorrectWords.length === 1) {
-    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`;
+    headerSummary.textContent = 'Great!'
+    res.textContent = 'You made 0 mistakes, congratulations!';
   } else {
-    cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`;
+    headerSummary.textContent = 'Ooooops!'
+    res.textContent = `You made ${incorrectWords.length} errors, try again!!`
   }
+
+  // add pic later...
+  cardsContainer.appendChild(summary);
+  summary.appendChild(headerSummary);
+  summary.appendChild(res);
+
+
+
+  // if (incorrectWords.length === 0) {
+  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали 0 ошибок, поздравляю!</div>`;
+  // } else if (incorrectWords.length === 1) {
+  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`;
+  // } else {
+  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`;
+  // }
 }
