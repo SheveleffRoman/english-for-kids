@@ -79,3 +79,42 @@
 .stat-table td:hover {
     background: #f191a9e1;
 }
+
+.summary {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #23d5ab;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 8px 30px cyan;
+    border: 2px solid cyan;
+    margin: auto;
+}
+
+.summary h1 {
+    font-family: "Cookie", Verdana, sans-serif;
+    color: #f7ffff;
+    text-shadow: 0px 5px 1px #6d5bbe;
+    font-size: 5rem;
+    line-height: 0rem;
+    margin: 0;
+}
+
+.summary p {
+    color: white;
+    font-size: 1.3rem;
+    font-family: "Inter", Verdana, sans-serif;
+    margin: 0;
+    background: #6d5bbe;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 45px;
+}
+
+/* .summary img {
+    width: 250px;
+    margin-top: 25px;
+    margin-left: -13px;
+} */

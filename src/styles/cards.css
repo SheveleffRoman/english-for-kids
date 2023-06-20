@@ -224,3 +224,11 @@
 .non-clickable {
     pointer-events: none;
   }
+
+@media screen and (max-width: 599px) {
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

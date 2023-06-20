@@ -26,8 +26,6 @@ nav {
     cursor: pointer;
 }
 
-
-
 .header-buttons {
     display: flex;
     justify-content: space-between;
@@ -327,4 +325,32 @@ li.menu_item {
         top: 0;
         left: 0;
         display: block;
+}
+
+@media screen and (max-width: 633px) {
+    .logo {
+        display: none;
+    }
+
+    .burger.open {
+        transform: translate(210px, 0px)
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .burger.open {
+        transform: translate(160px, 0px)
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .burger.open {
+        transform: translate(180px, 0px)
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .burger.open {
+        transform: translate(200px, 0px)
+    }
 }
