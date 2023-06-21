@@ -1,5 +1,5 @@
 import { ElementBuilder, cardsContainer } from "./createCategoryCards.js";
-import { correctWords, incorrectWords } from "./interactive.js";
+import { changeMode, correctWords, flipButtons, incorrectWords, playSound } from "./interactive.js";
 
 const statsBtn = document.querySelector(".stats_btn");
 
@@ -112,6 +112,25 @@ async function createTable(arr1, arr2, arr3) {
 
   difficultWords.textContent = "Repeat difficult words";
 
+difficultWords.addEventListener('click', async () => {
+    let cardCat = repeatDifficultWords();
+    console.log(cardCat);
+    cardsContainer.innerHTML = "";
+    cardsContainer.classList.remove('table-flex');
+    cardsContainer.classList.add('flex-card')
+    changeMode.setAttribute('disabled', 'true');
+    changeMode.nextElementSibling.classList.add('inactive')
+  
+    const promises = cardCat.map(elem => cleanCardsJSON(elem.category, elem.word));
+    const result = await Promise.all(promises);
+    const suitableObjects = result.flat();
+    console.log(suitableObjects);
+    createDifficultCards(suitableObjects);
+    playSound();
+    flipButtons();
+  });
+  
+
   const resetStat = new ElementBuilder("button")
     .setAttribute("class", "reset-stat")
     .build();
@@ -216,3 +235,205 @@ function clearStat() {
   localStorage.clear();
   statsBtn.click();
 }
+
+function repeatDifficultWords() {
+   // Получение всех рядов таблицы
+let rows = document.querySelectorAll('tbody tr');
+
+// Создание массива для хранения подходящих рядов
+let suitableRows = [];
+
+// Проход по каждому ряду таблицы
+rows.forEach(function(row) {
+  let cells = row.querySelectorAll('td');
+  
+  // Проверка, содержит ли последняя ячейка число меньше или равно 25
+  let lastCell = cells[cells.length - 1];
+  let cellValue = parseInt(lastCell.innerText || lastCell.textContent);
+  
+  if (!isNaN(cellValue) && cellValue !== 0 && cellValue <= 25) {
+    suitableRows.push(row);
+  }
+});
+
+// Проверка, есть ли более 8 подходящих рядов
+if (suitableRows.length > 8) {
+  // Перемешивание массива подходящих рядов
+  suitableRows.sort(function() {
+    return 0.5 - Math.random();
+  });
+  
+  // Обрезка массива до 8 элементов
+  suitableRows = suitableRows.slice(0, 8);
+}
+
+// Вывод результатов в консоль
+// console.log(suitableRows);
+// return suitableRows;
+// Создание массива для хранения текстового контента первых двух <td> элементов каждого ряда
+let firstTwoTdContents = [];
+
+// Проход по каждому ряду в массиве suitableRows
+suitableRows.forEach(function(row) {
+  let cells = row.getElementsByTagName('td');
+
+  // Получение текстового контента первых двух <td> элементов ряда
+  let category = cells[0].textContent;
+  let word = cells[1].textContent;
+
+  // Добавление текстового контента в массив firstTwoTdContents
+  firstTwoTdContents.push({category, word});
+});
+
+// Вывод результатов в консоль
+// console.log(firstTwoTdContents);
+return firstTwoTdContents;
+
+}
+
+// let suitableObjects = [];
+
+// async function cleanCardsJSON(category, word) {
+//   try {
+//     const response = await fetch("./src/scripts/cards.json");
+//     const data = await response.json();
+//     const wordsArr = data[category].words;
+//     wordsArr.forEach((item) => {
+//       if (item.en === word) {
+//         suitableObjects.push(item);
+//       }
+//     });
+//   } catch (error) {}
+// }
+
+async function cleanCardsJSON(category, word) {
+    try {
+      const response = await fetch("./src/scripts/cards.json");
+      const data = await response.json();
+      const wordsArr = data[category].words;
+      const suitableObjects = wordsArr.filter(item => item.en === word);
+      return suitableObjects;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function extractWordFromImagePath(imagePath) {
+    const parts = imagePath.split('/');
+    return parts[4];
+  }
+  
+
+async function createDifficultCards(arr) {
+    try {
+      arr.forEach((item) => {
+        const cardsWrapper = new ElementBuilder("div")
+          .setAttribute("class", "card_container")
+          .build();
+  
+        const cardElem = new ElementBuilder("div")
+          .setAttribute("class", "card")
+          .setAttribute("data-word", `${item.en}`)
+          .setAttribute("data-category", `${extractWordFromImagePath(item.img)}`)
+          .build();
+  
+        cardsContainer.appendChild(cardsWrapper);
+        cardsWrapper.appendChild(cardElem);
+  
+        const cardFace = new ElementBuilder("div")
+          .setAttribute("class", "card_face")
+          .build();
+  
+        cardElem.appendChild(cardFace);
+  
+        const cardImage = new ElementBuilder("div")
+          .setAttribute("class", "card_image")
+          .build();
+  
+        cardFace.appendChild(cardImage);
+  
+        const imageTag = new ElementBuilder("img").build();
+        imageTag.src = item.img;
+        imageTag.alt = item.en;
+  
+        cardImage.appendChild(imageTag);
+  
+        const cardInfo = new ElementBuilder("div")
+          .setAttribute("class", "card_info")
+          .build();
+        const changeMode = document.getElementById("app_mode_input");
+        if (changeMode.checked) {
+          cardInfo.setAttribute("class", "card_info play-mode");
+        }
+  
+        cardFace.appendChild(cardInfo);
+  
+        const infoBtn = new ElementBuilder("div")
+          .setAttribute("class", "info_btn")
+          .build();
+  
+        cardInfo.appendChild(infoBtn);
+  
+        const spanBtn = new ElementBuilder("span")
+          .setAttribute("class", "icon_btn info")
+          .build();
+  
+        infoBtn.appendChild(spanBtn);
+  
+        const infoTitle = new ElementBuilder("div")
+          .setAttribute("class", "info_title")
+          .text(`${item.en}`)
+          .build();
+  
+        cardInfo.appendChild(infoTitle);
+  
+        const soundBtn = new ElementBuilder("div")
+          .setAttribute("class", "sound_btn")
+          .build();
+  
+        cardInfo.appendChild(soundBtn);
+  
+        const spanSound = new ElementBuilder("span")
+          .setAttribute("class", "icon_btn")
+          .setAttribute("data-sound", `${item.sound}`)
+          .build();
+  
+        soundBtn.appendChild(spanSound);
+  
+        const cardBack = new ElementBuilder("div")
+          .setAttribute("class", "card_back")
+          .build();
+  
+        cardElem.appendChild(cardBack);
+  
+        const cardBackImage = new ElementBuilder("div")
+          .setAttribute("class", "card_image")
+          .build();
+  
+        cardBack.appendChild(cardBackImage);
+  
+        const cardBackImgTag = new ElementBuilder("img").build();
+  
+        cardBackImage.appendChild(cardBackImgTag);
+  
+        cardBackImgTag.src = item.img;
+        cardBackImgTag.alt = item.en;
+  
+        const cardBackInfo = new ElementBuilder("div")
+          .setAttribute("class", "card_info")
+          .build();
+  
+        cardBack.appendChild(cardBackInfo);
+  
+        const cardBackTitle = new ElementBuilder("div")
+          .setAttribute("class", "info_title")
+          .text(`${item.ru}`)
+          .build();
+  
+        cardBackInfo.appendChild(cardBackTitle);
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  
