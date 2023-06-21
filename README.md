@@ -1,3 +1,3 @@
 # english-for-kids task
 
-https://github.com/SheveleffRoman/english-for-kids/blob/gh-pages/index.html
+https://sheveleffroman.github.io/english-for-kids/index.html
