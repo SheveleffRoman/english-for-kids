@@ -40,7 +40,7 @@ export function playSound() {
   });
 }
 
-const changeMode = document.getElementById("app_mode_input");
+export const changeMode = document.getElementById("app_mode_input");
 
 export function playMode() {
   console.log(changeMode);
@@ -90,6 +90,10 @@ export function goPlay() {
     let soundPath = currentWord.sound;
     let audio = new Audio(soundPath);
     audio.play();
+   
+    changeMode.addEventListener('change', () => {
+      window.location.href = './index.html'
+    })
     // console.log("Find the card with the word:", currentWord.en);
 
     repeatBtn.addEventListener("click", () => repeatLastWord(currentWord));
@@ -230,4 +234,5 @@ function makeSummary() {
   // } else {
   //   cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`;
   // }
+
 }
