@@ -327,6 +327,10 @@ li.menu_item {
         display: block;
 }
 
+.inactive {
+    background-color: #bdbbbc;
+}
+
 @media screen and (max-width: 633px) {
     .logo {
         display: none;

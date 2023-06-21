@@ -1,5 +1,5 @@
 import { cardsContainer, createCards } from "./createCategoryCards.js";
-import { flipButtons, playMode, playSound } from "./interactive.js";
+import { changeMode, flipButtons, playMode, playSound } from "./interactive.js";
 
 export const burger = document.querySelector('div.burger');
 
@@ -55,7 +55,10 @@ export function menuClick() {
       let url = new URL(link.href);
       let hash = url.hash.slice(1);
       await createCards(hash);
-      cardsContainer.classList.remove('table-flex')
+      cardsContainer.classList.remove('table-flex');
+      cardsContainer.classList.remove('flex-card');
+      changeMode.removeAttribute('disabled');
+      changeMode.nextElementSibling.classList.remove('inactive')
       playMode();
       flipButtons();
       playSound();
