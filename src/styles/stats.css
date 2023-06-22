@@ -134,3 +134,9 @@
     margin-top: 25px;
     margin-left: -13px;
 } */
+
+.sort-symbol::before {
+    content: "";
+    margin-left: 5px;
+    font-weight: bold;
+  }

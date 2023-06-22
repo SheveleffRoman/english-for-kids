@@ -1,5 +1,11 @@
 import { ElementBuilder, cardsContainer } from "./createCategoryCards.js";
-import { changeMode, correctWords, flipButtons, incorrectWords, playSound } from "./interactive.js";
+import {
+  changeMode,
+  correctWords,
+  flipButtons,
+  incorrectWords,
+  playSound,
+} from "./interactive.js";
 
 const statsBtn = document.querySelector(".stats_btn");
 
@@ -35,7 +41,10 @@ export function pushToLocalStorage() {
 
     // Сохраняем обновленный массив слов в локальное хранилище
     localStorage.setItem("correctWords", JSON.stringify(existingCorrectWords));
-    localStorage.setItem("incorrectWords", JSON.stringify(existingIncorrectWords));
+    localStorage.setItem(
+      "incorrectWords",
+      JSON.stringify(existingIncorrectWords)
+    );
   }
 }
 
@@ -116,37 +125,35 @@ async function createTable(arr1, arr2, arr3) {
 
   difficultWords.textContent = "Repeat difficult words";
 
-difficultWords.addEventListener("click", async () => {
-  let cardCat = repeatDifficultWords();
-  console.log(cardCat);
-  cardsContainer.innerHTML = "";
-  cardsContainer.classList.remove("table-flex");
+  difficultWords.addEventListener("click", async () => {
+    let cardCat = repeatDifficultWords();
+    console.log(cardCat);
+    cardsContainer.innerHTML = "";
+    cardsContainer.classList.remove("table-flex");
 
-  if (cardCat.length !== 0) {
-  cardsContainer.classList.add("flex-card");
-//   if (changeMode.checked) {
-//     changeMode.click();
-//   }
-//   changeMode.setAttribute("disabled", "true");
-//   changeMode.nextElementSibling.classList.add("inactive");
-  const promises = cardCat.map((elem) =>
-    cleanCardsJSON(elem.category, elem.word)
-  );
-  const result = await Promise.all(promises);
-  const suitableObjects = result.flat();
-  console.log(suitableObjects);
-  createDifficultCards(suitableObjects);
-  playSound();
-  flipButtons();
-} else {
-    makeStatSummary();
-    setTimeout(() => {
+    if (cardCat.length !== 0) {
+      cardsContainer.classList.add("flex-card");
+      //   if (changeMode.checked) {
+      //     changeMode.click();
+      //   }
+      //   changeMode.setAttribute("disabled", "true");
+      //   changeMode.nextElementSibling.classList.add("inactive");
+      const promises = cardCat.map((elem) =>
+        cleanCardsJSON(elem.category, elem.word)
+      );
+      const result = await Promise.all(promises);
+      const suitableObjects = result.flat();
+      console.log(suitableObjects);
+      createDifficultCards(suitableObjects);
+      playSound();
+      flipButtons();
+    } else {
+      makeStatSummary();
+      setTimeout(() => {
         statsBtn.click();
       }, 3000);
-      
-}
-});
-  
+    }
+  });
 
   const resetStat = new ElementBuilder("button")
     .setAttribute("class", "reset-stat")
@@ -178,13 +185,13 @@ difficultWords.addEventListener("click", async () => {
   table.appendChild(tbody);
 
   thead.innerHTML = `
-    <th>Categories</th>
-    <th>Words</th>
-    <th>Translation</th>
-    <th>Trained</th>
-    <th>Correct</th>
-    <th>Incorrect</th>
-    <th>%</th>
+    <th class="sortable">Categories<span class="sort-symbol"></span></th>
+    <th class="sortable">Words<span class="sort-symbol"></span></th>
+    <th class="sortable">Translation<span class="sort-symbol"></span></th>
+    <th class="sortable">Trained<span class="sort-symbol"></span></th>
+    <th class="sortable">Correct<span class="sort-symbol"></span></th>
+    <th class="sortable">Incorrect<span class="sort-symbol"></span></th>
+    <th class="sortable">%<span class="sort-symbol"></span></th>
     `;
 
   console.log(data);
@@ -246,6 +253,24 @@ difficultWords.addEventListener("click", async () => {
       tableRow.appendChild(rate);
     });
   }
+  const headers = document.querySelectorAll(".sortable");
+  for (let i = 0; i < headers.length; i++) {
+    const table = headers[i].closest("table");
+    const column = Array.from(headers[i].parentNode.cells).indexOf(headers[i]);
+
+    // Установка начального порядка сортировки в "asc" для первых трех столбцов и "desc" для вторых трех столбцов
+    // чтоб при первом нажатии они сортировались по убыванию
+    if (column < 3) {
+      table.setAttribute("data-sort-order-" + column, "desc");
+    } else {
+      table.setAttribute("data-sort-order-" + column, "asc");
+    }
+
+    headers[i].addEventListener("click", function () {
+      const column = Array.from(this.parentNode.cells).indexOf(this);
+      sortTable(table, column);
+    });
+  }
 }
 
 function clearStat() {
@@ -254,207 +279,249 @@ function clearStat() {
 }
 
 function repeatDifficultWords() {
-   // Получение всех рядов таблицы
-let rows = document.querySelectorAll('tbody tr');
+  // Получение всех рядов таблицы
+  let rows = document.querySelectorAll("tbody tr");
 
-// Создание массива для хранения подходящих рядов
-let suitableRows = [];
+  // Создание массива для хранения подходящих рядов
+  let suitableRows = [];
 
-// Проход по каждому ряду таблицы
-rows.forEach(function(row) {
-  let cells = row.querySelectorAll('td');
-  
-  // Проверка, содержит ли последняя ячейка число меньше или равно 25
-  let lastCell = cells[cells.length - 1];
-  let cellValue = parseInt(lastCell.innerText || lastCell.textContent);
-  
-  if (!isNaN(cellValue) && cellValue !== 0 && cellValue <= 25) {
-    suitableRows.push(row);
-  }
-});
+  // Проход по каждому ряду таблицы
+  rows.forEach(function (row) {
+    let cells = row.querySelectorAll("td");
 
-// Проверка, есть ли более 8 подходящих рядов
-if (suitableRows.length > 8) {
-  // Перемешивание массива подходящих рядов
-  suitableRows.sort(function() {
-    return 0.5 - Math.random();
+    // Проверка, содержит ли последняя ячейка число меньше или равно 25
+    let lastCell = cells[cells.length - 1];
+    let cellValue = parseInt(lastCell.innerText || lastCell.textContent);
+
+    if (!isNaN(cellValue) && cellValue !== 0 && cellValue <= 25) {
+      suitableRows.push(row);
+    }
   });
-  
-  // Обрезка массива до 8 элементов
-  suitableRows = suitableRows.slice(0, 8);
-}
 
-// Вывод результатов в консоль
-// console.log(suitableRows);
-// return suitableRows;
-// Создание массива для хранения текстового контента первых двух <td> элементов каждого ряда
-let firstTwoTdContents = [];
+  // Проверка, есть ли более 8 подходящих рядов
+  if (suitableRows.length > 8) {
+    // Перемешивание массива подходящих рядов
+    suitableRows.sort(function () {
+      return 0.5 - Math.random();
+    });
 
-// Проход по каждому ряду в массиве suitableRows
-suitableRows.forEach(function(row) {
-  let cells = row.getElementsByTagName('td');
+    // Обрезка массива до 8 элементов
+    suitableRows = suitableRows.slice(0, 8);
+  }
 
-  // Получение текстового контента первых двух <td> элементов ряда
-  let category = cells[0].textContent;
-  let word = cells[1].textContent;
+  // Вывод результатов в консоль
+  // console.log(suitableRows);
+  // return suitableRows;
+  // Создание массива для хранения текстового контента первых двух <td> элементов каждого ряда
+  let firstTwoTdContents = [];
 
-  // Добавление текстового контента в массив firstTwoTdContents
-  firstTwoTdContents.push({category, word});
-});
+  // Проход по каждому ряду в массиве suitableRows
+  suitableRows.forEach(function (row) {
+    let cells = row.getElementsByTagName("td");
 
-// Вывод результатов в консоль
-// console.log(firstTwoTdContents);
-return firstTwoTdContents;
+    // Получение текстового контента первых двух <td> элементов ряда
+    let category = cells[0].textContent;
+    let word = cells[1].textContent;
 
+    // Добавление текстового контента в массив firstTwoTdContents
+    firstTwoTdContents.push({ category, word });
+  });
+
+  // Вывод результатов в консоль
+  // console.log(firstTwoTdContents);
+  return firstTwoTdContents;
 }
 
 async function cleanCardsJSON(category, word) {
-    try {
-      const response = await fetch("./src/scripts/cards.json");
-      const data = await response.json();
-      const wordsArr = data[category].words;
-      const suitableObjects = wordsArr.filter(item => item.en === word);
-      return suitableObjects;
-    } catch (error) {
-      return [];
-    }
+  try {
+    const response = await fetch("./src/scripts/cards.json");
+    const data = await response.json();
+    const wordsArr = data[category].words;
+    const suitableObjects = wordsArr.filter((item) => item.en === word);
+    return suitableObjects;
+  } catch (error) {
+    return [];
   }
+}
 
-  function extractWordFromImagePath(imagePath) {
-    const parts = imagePath.split('/');
-    return parts[4];
-  }
-  
+function extractWordFromImagePath(imagePath) {
+  const parts = imagePath.split("/");
+  return parts[4];
+}
 
 async function createDifficultCards(arr) {
-    try {
-      arr.forEach((item) => {
-        const cardsWrapper = new ElementBuilder("div")
-          .setAttribute("class", "card_container")
-          .build();
-  
-        const cardElem = new ElementBuilder("div")
-          .setAttribute("class", "card")
-          .setAttribute("data-word", `${item.en}`)
-          .setAttribute("data-category", `${extractWordFromImagePath(item.img)}`)
-          .build();
-  
-        cardsContainer.appendChild(cardsWrapper);
-        cardsWrapper.appendChild(cardElem);
-  
-        const cardFace = new ElementBuilder("div")
-          .setAttribute("class", "card_face")
-          .build();
-  
-        cardElem.appendChild(cardFace);
-  
-        const cardImage = new ElementBuilder("div")
-          .setAttribute("class", "card_image")
-          .build();
-  
-        cardFace.appendChild(cardImage);
-  
-        const imageTag = new ElementBuilder("img").build();
-        imageTag.src = item.img;
-        imageTag.alt = item.en;
-  
-        cardImage.appendChild(imageTag);
-  
-        const cardInfo = new ElementBuilder("div")
-          .setAttribute("class", "card_info")
-          .build();
-        const changeMode = document.getElementById("app_mode_input");
-        if (changeMode.checked) {
-          cardInfo.setAttribute("class", "card_info play-mode");
-        }
-  
-        cardFace.appendChild(cardInfo);
-  
-        const infoBtn = new ElementBuilder("div")
-          .setAttribute("class", "info_btn")
-          .build();
-  
-        cardInfo.appendChild(infoBtn);
-  
-        const spanBtn = new ElementBuilder("span")
-          .setAttribute("class", "icon_btn info")
-          .build();
-  
-        infoBtn.appendChild(spanBtn);
-  
-        const infoTitle = new ElementBuilder("div")
-          .setAttribute("class", "info_title")
-          .text(`${item.en}`)
-          .build();
-  
-        cardInfo.appendChild(infoTitle);
-  
-        const soundBtn = new ElementBuilder("div")
-          .setAttribute("class", "sound_btn")
-          .build();
-  
-        cardInfo.appendChild(soundBtn);
-  
-        const spanSound = new ElementBuilder("span")
-          .setAttribute("class", "icon_btn")
-          .setAttribute("data-sound", `${item.sound}`)
-          .build();
-  
-        soundBtn.appendChild(spanSound);
-  
-        const cardBack = new ElementBuilder("div")
-          .setAttribute("class", "card_back")
-          .build();
-  
-        cardElem.appendChild(cardBack);
-  
-        const cardBackImage = new ElementBuilder("div")
-          .setAttribute("class", "card_image")
-          .build();
-  
-        cardBack.appendChild(cardBackImage);
-  
-        const cardBackImgTag = new ElementBuilder("img").build();
-  
-        cardBackImage.appendChild(cardBackImgTag);
-  
-        cardBackImgTag.src = item.img;
-        cardBackImgTag.alt = item.en;
-  
-        const cardBackInfo = new ElementBuilder("div")
-          .setAttribute("class", "card_info")
-          .build();
-  
-        cardBack.appendChild(cardBackInfo);
-  
-        const cardBackTitle = new ElementBuilder("div")
-          .setAttribute("class", "info_title")
-          .text(`${item.ru}`)
-          .build();
-  
-        cardBackInfo.appendChild(cardBackTitle);
-      });
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  try {
+    arr.forEach((item) => {
+      const cardsWrapper = new ElementBuilder("div")
+        .setAttribute("class", "card_container")
+        .build();
+
+      const cardElem = new ElementBuilder("div")
+        .setAttribute("class", "card")
+        .setAttribute("data-word", `${item.en}`)
+        .setAttribute("data-category", `${extractWordFromImagePath(item.img)}`)
+        .build();
+
+      cardsContainer.appendChild(cardsWrapper);
+      cardsWrapper.appendChild(cardElem);
+
+      const cardFace = new ElementBuilder("div")
+        .setAttribute("class", "card_face")
+        .build();
+
+      cardElem.appendChild(cardFace);
+
+      const cardImage = new ElementBuilder("div")
+        .setAttribute("class", "card_image")
+        .build();
+
+      cardFace.appendChild(cardImage);
+
+      const imageTag = new ElementBuilder("img").build();
+      imageTag.src = item.img;
+      imageTag.alt = item.en;
+
+      cardImage.appendChild(imageTag);
+
+      const cardInfo = new ElementBuilder("div")
+        .setAttribute("class", "card_info")
+        .build();
+      const changeMode = document.getElementById("app_mode_input");
+      if (changeMode.checked) {
+        cardInfo.setAttribute("class", "card_info play-mode");
+      }
+
+      cardFace.appendChild(cardInfo);
+
+      const infoBtn = new ElementBuilder("div")
+        .setAttribute("class", "info_btn")
+        .build();
+
+      cardInfo.appendChild(infoBtn);
+
+      const spanBtn = new ElementBuilder("span")
+        .setAttribute("class", "icon_btn info")
+        .build();
+
+      infoBtn.appendChild(spanBtn);
+
+      const infoTitle = new ElementBuilder("div")
+        .setAttribute("class", "info_title")
+        .text(`${item.en}`)
+        .build();
+
+      cardInfo.appendChild(infoTitle);
+
+      const soundBtn = new ElementBuilder("div")
+        .setAttribute("class", "sound_btn")
+        .build();
+
+      cardInfo.appendChild(soundBtn);
+
+      const spanSound = new ElementBuilder("span")
+        .setAttribute("class", "icon_btn")
+        .setAttribute("data-sound", `${item.sound}`)
+        .build();
+
+      soundBtn.appendChild(spanSound);
+
+      const cardBack = new ElementBuilder("div")
+        .setAttribute("class", "card_back")
+        .build();
+
+      cardElem.appendChild(cardBack);
+
+      const cardBackImage = new ElementBuilder("div")
+        .setAttribute("class", "card_image")
+        .build();
+
+      cardBack.appendChild(cardBackImage);
+
+      const cardBackImgTag = new ElementBuilder("img").build();
+
+      cardBackImage.appendChild(cardBackImgTag);
+
+      cardBackImgTag.src = item.img;
+      cardBackImgTag.alt = item.en;
+
+      const cardBackInfo = new ElementBuilder("div")
+        .setAttribute("class", "card_info")
+        .build();
+
+      cardBack.appendChild(cardBackInfo);
+
+      const cardBackTitle = new ElementBuilder("div")
+        .setAttribute("class", "info_title")
+        .text(`${item.ru}`)
+        .build();
+
+      cardBackInfo.appendChild(cardBackTitle);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function makeStatSummary() {
+  cardsContainer.innerHTML = "";
+  const summary = new ElementBuilder("div")
+    .setAttribute("class", "summary")
+    .build();
+  const headerSummary = new ElementBuilder("h1").build();
+  const res = new ElementBuilder("p").build();
+
+  headerSummary.textContent = "Great!";
+  res.textContent = "You have no difficulty with words!";
+
+  // add pic later...
+  cardsContainer.appendChild(summary);
+  summary.appendChild(headerSummary);
+  summary.appendChild(res);
+}
+
+function sortTable(table, column) {
+  const rows = Array.from(table.tBodies[0].rows);
+
+  // Определение порядка сортировки (desc или asc)
+  const sortOrder = table.getAttribute("data-sort-order-" + column);
+  const order = sortOrder === "desc" ? 1 : -1;
+
+  rows.sort(function (a, b) {
+    const cellA = a.cells[column].textContent.trim();
+    const cellB = b.cells[column].textContent.trim();
+
+    return (
+      order *
+      cellA.localeCompare(cellB, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      })
+    );
+  });
+
+  // Удаление существующих строк
+  while (table.tBodies[0].firstChild) {
+    table.tBodies[0].removeChild(table.tBodies[0].firstChild);
   }
 
-  function makeStatSummary() {
-    cardsContainer.innerHTML = "";
-    const summary = new ElementBuilder('div')
-      .setAttribute('class', 'summary')
-      .build();
-    const headerSummary = new ElementBuilder('h1')
-      .build();
-    const res = new ElementBuilder('p')
-      .build();
-  
-      headerSummary.textContent = 'Great!'
-      res.textContent = 'You have no difficulty with words!';
+  // Добавление отсортированных строк
+  table.tBodies[0].append(...rows);
 
-    // add pic later...
-    cardsContainer.appendChild(summary);
-    summary.appendChild(headerSummary);
-    summary.appendChild(res);
+  // Удаление символов сортировки с других заголовков столбцов
+  const sortSymbols = table.getElementsByClassName("sort-symbol");
+  for (var i = 0; i < sortSymbols.length; i++) {
+    sortSymbols[i].textContent = "";
   }
-  
+
+  // Добавление символа сортировки для текущего заголовка столбца
+  const sortSymbol = table.querySelector(
+    "th:nth-child(" + (column + 1) + ") .sort-symbol"
+  );
+  sortSymbol.textContent = order === 1 ? "↓" : "↑";
+
+  // Изменение порядка сортировки для следующих кликов
+  table.setAttribute(
+    "data-sort-order-" + column,
+    sortOrder === "desc" ? "asc" : "desc"
+  );
+}
