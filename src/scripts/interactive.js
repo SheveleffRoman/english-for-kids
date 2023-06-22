@@ -7,37 +7,91 @@ export const repeatBtn = document.querySelector(".repeat-word");
 const stars = document.querySelector(".stars");
 console.log(stars);
 
+// export function flipButtons() {
+//   const flipBtn = document.querySelectorAll(".info_btn");
+//   console.log(flipBtn);
+//   flipBtn.forEach((btn) =>
+//     btn.addEventListener("click", () => {
+//       const wordCard = btn.closest(".card");
+
+//       pushTrainedToLocalStorage(wordCard);
+
+//       wordCard.classList.add("flip");
+//       btn.classList.add("hidden");
+//       const backCard = wordCard.querySelector(".card_back");
+//       console.log(backCard);
+//       backCard.addEventListener("mouseleave", () => {
+//         wordCard.classList.remove("flip");
+//         btn.classList.remove("hidden");
+//       });
+//     })
+//   );
+// }
+
 export function flipButtons() {
   const flipBtn = document.querySelectorAll(".info_btn");
   console.log(flipBtn);
   flipBtn.forEach((btn) =>
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
       const wordCard = btn.closest(".card");
 
       pushTrainedToLocalStorage(wordCard);
 
       wordCard.classList.add("flip");
-      btn.classList.add("hidden");
+      // btn.classList.add("hidden");
       const backCard = wordCard.querySelector(".card_back");
       console.log(backCard);
-      backCard.addEventListener("mouseleave", () => {
+
+      // Добавляем обработчик для устройств с сенсорными экранами
+      const isTouchDevice = ("ontouchstart" in window || navigator.maxTouchPoints);
+      if (isTouchDevice) {
+        document.addEventListener("touchend", outsideClickHandler);
+      } else {
+        backCard.addEventListener("mouseleave", outsideClickHandler);
+      }
+
+      function outsideClickHandler() {
         wordCard.classList.remove("flip");
         btn.classList.remove("hidden");
-      });
+
+        // Удаляем обработчик для устройств с сенсорными экранами
+        if (isTouchDevice) {
+          document.removeEventListener("touchend", outsideClickHandler);
+        } else {
+          backCard.removeEventListener("mouseleave", outsideClickHandler);
+        }
+      }
     })
   );
 }
 
+
+// export function playSound() {
+//   const soundBtn = document.querySelectorAll(".sound_btn");
+//   console.log(soundBtn);
+//   soundBtn.forEach((btn) => {
+//     btn.addEventListener("click", function () {
+//       let soundPath = btn.firstChild.getAttribute("data-sound");
+//       let audio = new Audio(soundPath);
+//       audio.play();
+//     });
+//   });
+// }
+
 export function playSound() {
-  const soundBtn = document.querySelectorAll(".sound_btn");
-  console.log(soundBtn);
-  soundBtn.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      let soundPath = btn.firstChild.getAttribute("data-sound");
-      let audio = new Audio(soundPath);
-      audio.play();
-    });
+  const cards = document.querySelectorAll(".card_face");
+  console.log(cards);
+  cards.forEach((card) => {
+      card.addEventListener("click", clickCardSound);
   });
+}
+
+function clickCardSound() {
+  const soundBtn = this.querySelector(".sound_btn");
+  let soundPath = soundBtn.firstChild.getAttribute('data-sound');
+  let audio = new Audio(soundPath);
+  audio.play();
 }
 
 export const changeMode = document.getElementById("app_mode_input");
@@ -45,9 +99,20 @@ export const changeMode = document.getElementById("app_mode_input");
 export function playMode() {
   console.log(changeMode);
   const cards = document.querySelectorAll(".card_face > .card_info");
+  const cardFaces = document.querySelectorAll(".card_face");
   console.log(cards);
   changeMode.addEventListener("change", () => {
-    cards.forEach((card) => card.classList.toggle("play-mode"));
+    if (changeMode.checked) {
+      cards.forEach((card) => card.classList.add("play-mode"));
+      cardFaces.forEach((card) =>
+        card.removeEventListener("click", clickCardSound)
+      );
+    } else {
+      cards.forEach((card) => card.classList.remove("play-mode"));
+      cardFaces.forEach((card) =>
+        card.addEventListener("click", clickCardSound)
+      );
+    }
   });
 }
 
@@ -127,7 +192,7 @@ export function goPlay() {
 
             setTimeout(() => makeSummary(), 2000);
             return setTimeout(
-              () => (window.location.href = "/index.html"),
+              () => (window.location.href = "./index.html"),
               7000
             );
           }
@@ -224,15 +289,4 @@ function makeSummary() {
   cardsContainer.appendChild(summary);
   summary.appendChild(headerSummary);
   summary.appendChild(res);
-
-
-
-  // if (incorrectWords.length === 0) {
-  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали 0 ошибок, поздравляю!</div>`;
-  // } else if (incorrectWords.length === 1) {
-  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибку, почти получилось!</div>`;
-  // } else {
-  //   cardsContainer.innerHTML = `<div class="summary">Вы сделали ${incorrectWords.length} ошибки, попробуй еще!</div>`;
-  // }
-
 }
