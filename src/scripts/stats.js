@@ -6,6 +6,11 @@ const statsBtn = document.querySelector(".stats_btn");
 export function showStats() {
   statsBtn.addEventListener("click", (event) => {
     event.preventDefault();
+    if (changeMode.checked) {
+      changeMode.click();
+    }
+    changeMode.setAttribute("disabled", "true");
+    changeMode.nextElementSibling.classList.add("inactive");
     cardsContainer.innerHTML = "";
     getStats();
   });
@@ -70,13 +75,13 @@ function countStats(array) {
       const { category, word } = obj;
       const key = `${category}-${word}`;
 
-      // Увеличение счетчика повторений для данного ключа или инициализация его значением 1
+      // Увеличение счетчика повторений для данного ключа
       counts[key] = (counts[key] || 0) + 1;
 
       return counts;
     }, {});
 
-    // Преобразование результата в объект для удобного доступа
+    // Преобразование результата в объект
     const result = {};
     for (const key in wordCounts) {
       const [category, word] = key.split("-");
@@ -90,7 +95,6 @@ function countStats(array) {
       result[category][word] = wordCounts[key];
     }
 
-    // Вывод результатов
     console.log(result);
     return result;
   }
@@ -112,23 +116,36 @@ async function createTable(arr1, arr2, arr3) {
 
   difficultWords.textContent = "Repeat difficult words";
 
-difficultWords.addEventListener('click', async () => {
-    let cardCat = repeatDifficultWords();
-    console.log(cardCat);
-    cardsContainer.innerHTML = "";
-    cardsContainer.classList.remove('table-flex');
-    cardsContainer.classList.add('flex-card')
-    changeMode.setAttribute('disabled', 'true');
-    changeMode.nextElementSibling.classList.add('inactive')
-  
-    const promises = cardCat.map(elem => cleanCardsJSON(elem.category, elem.word));
-    const result = await Promise.all(promises);
-    const suitableObjects = result.flat();
-    console.log(suitableObjects);
-    createDifficultCards(suitableObjects);
-    playSound();
-    flipButtons();
-  });
+difficultWords.addEventListener("click", async () => {
+  let cardCat = repeatDifficultWords();
+  console.log(cardCat);
+  cardsContainer.innerHTML = "";
+  cardsContainer.classList.remove("table-flex");
+
+  if (cardCat.length !== 0) {
+  cardsContainer.classList.add("flex-card");
+//   if (changeMode.checked) {
+//     changeMode.click();
+//   }
+//   changeMode.setAttribute("disabled", "true");
+//   changeMode.nextElementSibling.classList.add("inactive");
+  const promises = cardCat.map((elem) =>
+    cleanCardsJSON(elem.category, elem.word)
+  );
+  const result = await Promise.all(promises);
+  const suitableObjects = result.flat();
+  console.log(suitableObjects);
+  createDifficultCards(suitableObjects);
+  playSound();
+  flipButtons();
+} else {
+    makeStatSummary();
+    setTimeout(() => {
+        statsBtn.click();
+      }, 3000);
+      
+}
+});
   
 
   const resetStat = new ElementBuilder("button")
@@ -291,21 +308,6 @@ return firstTwoTdContents;
 
 }
 
-// let suitableObjects = [];
-
-// async function cleanCardsJSON(category, word) {
-//   try {
-//     const response = await fetch("./src/scripts/cards.json");
-//     const data = await response.json();
-//     const wordsArr = data[category].words;
-//     wordsArr.forEach((item) => {
-//       if (item.en === word) {
-//         suitableObjects.push(item);
-//       }
-//     });
-//   } catch (error) {}
-// }
-
 async function cleanCardsJSON(category, word) {
     try {
       const response = await fetch("./src/scripts/cards.json");
@@ -435,5 +437,24 @@ async function createDifficultCards(arr) {
     } catch (error) {
       console.error("Error:", error);
     }
+  }
+
+  function makeStatSummary() {
+    cardsContainer.innerHTML = "";
+    const summary = new ElementBuilder('div')
+      .setAttribute('class', 'summary')
+      .build();
+    const headerSummary = new ElementBuilder('h1')
+      .build();
+    const res = new ElementBuilder('p')
+      .build();
+  
+      headerSummary.textContent = 'Great!'
+      res.textContent = 'You have no difficulty with words!';
+
+    // add pic later...
+    cardsContainer.appendChild(summary);
+    summary.appendChild(headerSummary);
+    summary.appendChild(res);
   }
   
