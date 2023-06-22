@@ -67,12 +67,3 @@ export function menuClick() {
   cards.forEach((card) => card.addEventListener("click", handleCardClick));
 }
 
-// menuLinks.forEach(link => link.addEventListener('click', handleClick));
-// menuLinks.forEach(link => link.addEventListener('click', () => {
-//   let url = new URL(link.href)
-//   let hash = url.hash.slice(1)
-//   createCards(hash);
-// }));
-
-// cards.forEach(card => card.addEventListener('click', handleCardClick));
-
