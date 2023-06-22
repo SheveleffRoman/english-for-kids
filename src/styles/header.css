@@ -98,7 +98,7 @@ nav {
 }
 
 #app_mode_input:checked+.toggle_app_mode .switch_handle {
-    background: #F7FFFF;
+    background: rgb(255, 221, 130);;
     transform: translateX(57px);
 }
 
@@ -106,6 +106,7 @@ nav {
     opacity: 0;
     height: 0;
     width: 0;
+    visibility: hidden;
 }
 
 .stats_btn {
@@ -125,6 +126,10 @@ nav {
     box-shadow: 1px 2px 0px #168236;
     text-transform: uppercase;
     transition: 0.3s ease;
+}
+
+.stats_btn:hover {
+    transform: scale(1.1);
 }
 
 li.menu_item {
@@ -329,6 +334,7 @@ li.menu_item {
 
 .inactive {
     background-color: #bdbbbc;
+    box-shadow: 1px 2px 0px #a1a1a1;
 }
 
 @media screen and (max-width: 633px) {

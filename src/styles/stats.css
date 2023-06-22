@@ -25,11 +25,22 @@
 .stats_btns .difficult-words {
     background-color: #ffd86f;
     color: #30296f;
+    margin-right: 10px;
+}
+
+.stats_btns .difficult-words:hover {
+    transform: scale(1.1);
+    background-color: #ffc938;
 }
 
 .stats_btns .reset-stat {
     background-color: #ff7373;
     color: #ffffff;
+}
+
+.stats_btns .reset-stat:hover {
+    transform: scale(1.1);
+    background-color: #ff4d4d;
 }
 
 .table-overflow {
@@ -77,7 +88,7 @@
 }
 
 .stat-table td:hover {
-    background: #f191a9e1;
+    background: #f592c4;
 }
 
 .summary {
@@ -99,7 +110,7 @@
     text-shadow: 0px 5px 1px #6d5bbe;
     font-size: 5rem;
     line-height: 0rem;
-    margin: 0;
+    margin: 20px 0 15px 0;
 }
 
 .summary p {
