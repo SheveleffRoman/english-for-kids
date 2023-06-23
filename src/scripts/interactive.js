@@ -166,7 +166,7 @@ export function goPlay() {
 
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => {
-      card.addEventListener('click', function () {
+      card.addEventListener('click', () => {
         const clickedWord = this.dataset.word;
         const clickedCategory = this.dataset.category;
         if (clickedWord === currentWord.en) {
