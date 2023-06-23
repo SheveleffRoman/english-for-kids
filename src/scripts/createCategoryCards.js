@@ -1,7 +1,11 @@
+/* eslint-disable no-shadow */
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/extensions
-import { flipButtons, playMode, playSound } from './interactive.js';
+import {
+  changeMode, flipButtons, playMode, playSound,
+} from './interactive.js';
 
 export class ElementBuilder {
   constructor(tagName) {
@@ -150,6 +154,8 @@ export function categoryCardClick() {
   const cards = document.querySelectorAll('.category');
   cards.forEach((card) => card.addEventListener('click', async () => {
     const categoryId = card.getAttribute('id');
+    changeMode.removeAttribute('disabled');
+    changeMode.nextElementSibling.classList.remove('inactive');
     console.log(categoryId);
     await createCards(categoryId);
     playMode();

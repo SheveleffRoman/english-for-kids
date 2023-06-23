@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable no-shadow */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-param-reassign */
