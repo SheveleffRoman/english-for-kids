@@ -155,7 +155,7 @@ export function categoryCardClick() {
   cards.forEach((card) => card.addEventListener('click', async () => {
     const categoryId = card.getAttribute('id');
     changeMode.removeAttribute('disabled');
-    changeMode.nextElementSibling.classList.remove('inactive');
+    changeMode.parentElement.classList.remove('inactive');
     console.log(categoryId);
     await createCards(categoryId);
     playMode();

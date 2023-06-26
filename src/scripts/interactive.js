@@ -157,7 +157,7 @@ export function goPlay() {
     audio.play();
 
     changeMode.addEventListener('change', () => {
-      window.location.href = './index.html';
+      setTimeout(() => window.location.href = './index.html', 500);
     });
     // console.log("Find the card with the word:", currentWord.en);
 

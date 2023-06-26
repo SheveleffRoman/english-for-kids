@@ -28,7 +28,7 @@ export function showStats() {
       changeMode.click();
     }
     changeMode.setAttribute('disabled', 'true');
-    changeMode.nextElementSibling.classList.add('inactive');
+    changeMode.parentElement.classList.add('inactive');
     cardsContainer.innerHTML = '';
     getStats();
   });

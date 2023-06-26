@@ -60,7 +60,7 @@ export function menuClick() {
     cardsContainer.classList.remove('table-flex');
     cardsContainer.classList.remove('flex-card');
     changeMode.removeAttribute('disabled');
-    changeMode.nextElementSibling.classList.remove('inactive');
+    changeMode.parentElement.classList.remove('inactive');
     playMode();
     flipButtons();
     playSound();
