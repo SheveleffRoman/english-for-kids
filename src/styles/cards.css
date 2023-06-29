@@ -43,12 +43,12 @@
 .card-title {
     font-size: 1.8rem;
     text-transform: uppercase;
-    font-family: "Inter", Verdana, sans-serif;
+    font-family: 'Caprasimo', Verdana, sans-serif;
     font-weight: normal;
     letter-spacing: 0.15em;
     text-align: center;
     margin-bottom: 11px;
-    color: #30296f;
+    color: #443f77;
     line-height: 2.8rem;
 }
 
@@ -170,7 +170,7 @@
 .info_title {
     font-size: 1.5rem;
     text-transform: uppercase;
-    font-family: "Inter", Verdana, sans-serif;
+    font-family: "Cormorant Garamond", Verdana, sans-serif;
     font-weight: normal;
     letter-spacing: 0.15em;
     text-align: center;
