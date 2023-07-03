@@ -299,11 +299,11 @@ function repeatDifficultWords() {
   rows.forEach((row) => {
     const cells = row.querySelectorAll('td');
 
-    // Проверка, содержит ли последняя ячейка число меньше или равно 25
+    // Проверка, содержит ли последняя ячейка число меньше или равно 33%
     const lastCell = cells[cells.length - 1];
     const cellValue = parseInt(lastCell.innerText || lastCell.textContent);
 
-    if (!isNaN(cellValue) && cellValue !== 0 && cellValue <= 25) {
+    if (!isNaN(cellValue) && cellValue !== 0 && cellValue <= 33) {
       suitableRows.push(row);
     }
   });
