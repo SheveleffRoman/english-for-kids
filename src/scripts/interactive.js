@@ -278,9 +278,15 @@ function makeSummary() {
     .build();
 
   if (incorrectWords.length === 0) {
+    const soundPath = './src/sounds/stars/fanfaryi-podvodyaschie-itogi.mp3';
+    const audio = new Audio(soundPath);
+    audio.play();
     headerSummary.textContent = 'Great!';
     res.textContent = 'You made 0 mistakes, congratulations!';
   } else {
+    const soundPath = './src/sounds/stars/z_uk-proigrysha.mp3';
+    const audio = new Audio(soundPath);
+    audio.play();
     headerSummary.textContent = 'Ooooops!';
     res.textContent = `You made ${incorrectWords.length} errors, try again!!`;
   }
