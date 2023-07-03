@@ -1,0 +1,231 @@
+.main-container {
+    width: 85vw;
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 1200px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+}
+
+.category {
+    background: white;
+    width: 250px;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 19px;
+    position: relative;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 1;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.card-image {
+    position: relative;
+    height: 180px;
+    margin-bottom: 25px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.card-image img {
+    width: 300px;
+    position: absolute;
+    top: -34px;
+    left: -22px;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-family: 'Caprasimo', Verdana, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 11px;
+    color: #443f77;
+    line-height: 2.8rem;
+}
+
+.card-image.image_animals {
+    background-color: #9b9bda;
+}
+
+.card-image.image_food {
+    background-color: #f5cd65;
+}
+
+.card-image.image_home {
+    background-color: #58637f;
+}
+
+.card-image.image_body {
+    background-color: #aae4c2;
+}
+
+.card-image.image_hobbies {
+    background-color: #48433c;
+}
+
+.card-image.image_weather {
+    background-color: #b2e7f1;
+}
+
+.card-image.image_sports {
+    background-color: #d58ab1;
+}
+
+.card-image.image_transport {
+    background-color: #4c3d15;
+}
+
+
+.card_container {
+    position: relative;
+    width: 250px;
+    cursor: pointer;
+    height: 250px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+}
+
+.card {
+    background: white;
+    width: 100%;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 19px;
+    position: absolute;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 1;
+    transition: 0.5s ease;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+}
+
+.card_face {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.card_image {
+    position: relative;
+    height: 180px;
+    margin-bottom: 25px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.card_image img {
+    width: 160px;
+    position: relative;
+    top: 18px;
+    left: 44px;
+    transition: 0.3s ease;
+}
+
+.card_info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info_btn {
+    right: 0;
+    border-bottom-right-radius: 18px;
+    border-top-left-radius: 30px;
+}
+
+.info_btn, .sound_btn {
+    height: 38px;
+    width: 38px;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    transition: ease;
+}
+
+.info_btn .icon_btn {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: 9px;
+    left: 5px;
+    background-image: url(../images/cards/arrows-couple-counterclockwise-rotating-symbol.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.info_title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "Cormorant Garamond", Verdana, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #30296f;
+}
+
+.sound_btn {
+    left: 0;
+    border-bottom-left-radius: 18px;
+    border-top-right-radius: 30px;
+}
+
+.sound_btn .icon_btn {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 6px;
+    left: 5px;
+    background-image: url(../images/cards/speaker-filled-audio-tool.png);
+    background-size: cover;
+}
+
+.card_back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+.hidden {
+    opacity: 0;
+
+}
+
+.play-mode {
+    visibility: hidden;
+}
+
+.green {
+    border: 3px solid green;
+    transition: null;
+}
+
+.non-clickable {
+    pointer-events: none;
+  }
+
+@media screen and (max-width: 599px) {
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

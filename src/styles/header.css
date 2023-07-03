@@ -1,0 +1,447 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    height: 45px;
+    max-width: 1350px;
+    margin: 40px auto 0;
+}
+
+nav {
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Cherry Bomb One', Verdana, cursive;
+    font-weight: normal;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-shadow: 0px 3px 3px #30296f;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    color: #f592c4;
+    cursor: pointer;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: 0.3s ease;
+}
+
+/* .toggle_app_mode {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 43px;
+    background: #f592c4;
+    border-radius: 50px;
+    transition: 500ms;
+    overflow: hidden;
+    box-shadow: 1px 2px 0px #9f5278;
+}
+
+.switch_handle {
+    position: absolute;
+    display: inline-block;
+    top: 4px;
+    left: 4px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #ffffff;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+}
+
+.train_mode {
+    color: white;
+    position: relative;
+    top: 12px;
+    left: 45px;
+    font-family: 'Lato';
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.5s ease;
+}
+
+.play_mode {
+    display: none;
+    transition: 0.5s ease;
+}
+
+
+#app_mode_input:checked+.toggle_app_mode .train_mode {
+    display: none;
+}
+
+#app_mode_input:checked+.toggle_app_mode .play_mode {
+    color: white;
+    position: relative;
+    top: 11px;
+    left: 15px;
+    font-family: "Lato";
+    text-transform: uppercase;
+    font-size: 16px;
+    display: inline;
+}
+
+#app_mode_input:checked+.toggle_app_mode {
+    background: #6d5bbe	;
+    box-shadow: 1px 2px 0px #1f327d;
+}
+
+#app_mode_input:checked+.toggle_app_mode .switch_handle {
+    background: rgb(255, 221, 130);
+    transform: translateX(57px);
+}
+
+#app_mode_input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+} */
+
+.app_mode {
+    background: #8c97e8;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 240px;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: "Cherry Bomb One";
+    letter-spacing: 1px;
+    color: #fff;
+    padding-right: 120px;
+    position: relative;
+    box-shadow: 1px 2px 0px #6c76c0;
+  }
+  .app_mode:before {
+    content: "Play";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .switch-button-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+  }
+  .switch-button-checkbox:checked + .switch-button-label:before {
+    transform: translateX(120px);
+    transition: transform 300ms linear;
+    /* background-color: #3ca05a; */
+  }
+  .switch-button-checkbox + .switch-button-label {
+    position: relative;
+    padding: 10px 0;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+  .switch-button-checkbox + .switch-button-label:before {
+    content: "";
+    background: #f592c4;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+  .switch-button-checkbox + .switch-button-label .switch-button-label-span {
+    position: relative;
+  }
+
+.stats_btn {
+    text-align: center;
+    line-height: 2.6rem;
+    margin-left: 20px;
+    width: 68px;
+    display: block;
+    height: 43px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    background-color: #2EB657;
+    color: #ffffff;
+    font-family: "Cherry Bomb One";
+    cursor: pointer;
+    box-shadow: 1px 2px 0px #168236;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.stats_btn:hover {
+    transform: scale(1.1);
+}
+
+li.menu_item {
+    list-style: none;
+}
+
+.menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 6;
+    padding: 40px 0px 65px;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(40deg,#ffffff, #f592c4 40%);
+    box-shadow: 5px 0px 10px #00000033;
+    color: #ffffff;
+    transition: left 0.5s ease;
+    overflow: hidden scroll;
+  }
+
+  .menu_item {
+    height: 60px;
+    display: inline-block;
+    margin: 0;
+    padding-left: 65px;
+    transition: 0.3s ease;
+}
+
+.menu_item a {
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', Verdana, sans-serif;
+    font-size: 1.4rem;
+    transition: 0.3s ease;
+    text-transform: capitalize;
+}
+
+.menu_item.active a {
+    font-size: 1.5rem;
+    line-height: 3.1rem;
+    background: #6d5bbe;
+    padding: 7px 20px;
+    border-radius: 20px;
+    margin-left: -20px;
+    box-shadow: -1px 3px 0px #4a3d82;
+}
+
+.menu_item a:hover {
+    font-size: 1.5rem;
+    background-color: #70F99A;
+    padding: 7px 20px;
+    margin-left: -20px;
+    border-radius: 20px;
+    box-shadow: -1px 3px 0px #209b7e;
+    cursor: pointer;
+}
+
+.menu_item a:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 31px;
+    height: 30px;
+    margin-right: 10px;
+    top: 8px;
+    background-position: center;
+    background-size: contain;
+    transition: 0.3s ease;
+}
+
+.menu_link:before {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu_link.main::before {
+    background-image: url(../images/nav_img/app.png);
+}
+
+.menu_link.animals::before {
+    background-image: url(../images/nav_img/lion.png);
+}
+
+.menu_link.body::before {
+    background-image: url(../images/nav_img/physiology.png);
+}
+
+.menu_link.food::before {
+    background-image: url(../images/nav_img/hot-pot.png);
+}
+
+.menu_link.hobbies::before {
+    background-image: url(../images/nav_img/hobby.png);
+}
+
+.menu_link.weather::before {
+    background-image: url(../images/nav_img/planet-earth.png);
+}
+
+.menu_link.sports::before {
+    background-image: url(../images/nav_img/sports.png);
+}
+
+.menu_link.transport::before {
+    background-image: url(../images/nav_img/transportation.png);
+}
+
+.menu_link.home::before {
+    background-image: url(../images/nav_img/home.png);
+}
+
+.burger {
+    width: 45px;
+    height: 25px;
+    position: relative;
+    z-index: 7;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-child(1) {
+    top: 0px
+}
+
+.burger span:nth-child(2),.burger span:nth-child(3) {
+    top: 12px
+}
+
+.burger span:nth-child(4) {
+    top: 24px
+}
+
+.burger.open {
+    transform: translate(135px, 0px)
+}
+
+.burger.open span:nth-child(1),.burger.open span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%
+}
+
+.burger.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.burger.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.menu.show {
+    left: 0
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.blackout {
+    display: none;
+    transition: 0.3s ease;
+}
+
+.view {
+        height: calc(100vh + 0px);
+        width: calc(100vw + 0px);
+        background: #00000035;
+        position: fixed;
+        z-index: 50;
+        top: 0;
+        left: 0;
+        display: block;
+}
+
+.inactive {
+    background-color: #bdbbbc;
+    box-shadow: 1px 2px 0px #a1a1a1;
+}
+
+@media screen and (max-width: 815px) {
+    .logo {
+        display: none;
+    }
+
+    .burger.open {
+        transform: translate(210px, 0px)
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .burger.open {
+        transform: translate(160px, 0px)
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .burger.open {
+        transform: translate(180px, 0px)
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .burger.open {
+        transform: translate(200px, 0px)
+    }
+}
+
+@media screen and (max-width: 464px) {
+    .app_mode {
+        width: 120px;
+        padding-right: 60px;
+    }
+
+    .app_mode:before {
+        width: 60px;
+    }
+
+    .switch-button-checkbox:checked + .switch-button-label:before {
+        transform: translate(60px);
+    }
+}
